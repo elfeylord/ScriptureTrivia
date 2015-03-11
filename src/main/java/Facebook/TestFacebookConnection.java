@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trivia;
+package Facebook;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.restfb;
 
 /**
  *
@@ -31,7 +32,7 @@ public class TestFacebookConnection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FacebookClient facebookClient = new DefaultFacebookClient(MY_ACCESS_TOKEN, MY_APP_SECRET);
+        FacebookClient facebookClient = new DefaultFacebookClient("CAAGWWNwwHiABAPtZA8ggG0UfRqi6lJi8clvUL2rN8TiE8r079mKPtgmf01piW7WFdto2RtaxtJbI07U8ihUnXE1Heu938SO9eJ5qbokHZBmZAlxPq9C99nUlny0ZC6rR8d2otk9Vf8WqogbZAtGe5FFz125B2oZCAXsSWJnu3I8F0OtugdfLlkuEMam7JIV3jjk81C5JWVtpz9qgkXhCdc", "641ad98fc2cd744beed7d518e0d4d76a");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
