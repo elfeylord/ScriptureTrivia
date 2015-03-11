@@ -6,6 +6,8 @@
 package Facebook;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.FacebookClient.AccessToken;
+import com.restfb.types.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,7 +34,25 @@ public class TestFacebookConnection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FacebookClient facebookClient = new DefaultFacebookClient("CAAGWWNwwHiABAPtZA8ggG0UfRqi6lJi8clvUL2rN8TiE8r079mKPtgmf01piW7WFdto2RtaxtJbI07U8ihUnXE1Heu938SO9eJ5qbokHZBmZAlxPq9C99nUlny0ZC6rR8d2otk9Vf8WqogbZAtGe5FFz125B2oZCAXsSWJnu3I8F0OtugdfLlkuEMam7JIV3jjk81C5JWVtpz9qgkXhCdc", "641ad98fc2cd744beed7d518e0d4d76a");
+        String secret = "641ad98fc2cd744beed7d518e0d4d76a";
+        String appId = "446783372140064";
+        String accessToken = "CAAGWWNwwHiABAJVZC8ZCn8J1ysXSkKfZAOwGhCjSnwIZC9TqRNDLZAZCR9AzCUqIMvIQKJZBcGZAOZAhqttkc02AA97IvPjmZBGLZCAn0ShN02XB4vCICQioN6Tu6pfqHNDTmWpZBzFB3cvD6omd5BL6wRLHvBhNj2hyGFMObfEjo76ni5ieQUtAVkBtfE0nRD03E8RwRmKM78q0WUpqCtFyqTNo";
+        FacebookClient facebookClient = new DefaultFacebookClient(accessToken, secret);
+        User user = facebookClient.fetchObject("me", User.class);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet HelloWorld</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet HelloWorld at " + request.getContextPath() + "</h1>");
+            out.println("User name: " + user.getName());
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
