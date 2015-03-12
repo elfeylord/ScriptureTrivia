@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="225px" height="37px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g>
+        <g id="Layer1">
+            <g>
+                <path d="M147.796,8.16563C147.796,8.16563 150.117,10.799 152.571,8.03146C152.571,8.03146 150.508,10.8693 151.021,14.1035C151.595,17.7222 156.4,33.3425 156.4,33.3425L145.18,33.1967C145.18,33.1967 148.178,17.0003 149.082,14.0024C149.852,11.4489 148.32,9.75892 147.796,8.16563Z" style="fill:rgb(204,51,51);stroke-width:0.42px;stroke:black;"/>
+            </g>
+            <g>
+                <path d="M141.118,1.71018L137.881,5.2411L147.025,13.2587L150.218,7.36269L153.466,13.0236L161.859,4.86374L158.538,1.67349L150.212,7.12108L141.118,1.71018Z" style="fill:rgb(242,242,242);stroke-width:0.42px;stroke:black;"/>
+            </g>
+            <g>
+                <text x="5.74573px" y="26.4201px" style="font-family:Garamond;font-size:33.9867px;fill:rgb(204,51,51);">Scripture</text>
+            </g>
+            <g>
+                <text x="161.198px" y="26.4317px" style="font-family:Garamond;font-size:33.9867px;fill:rgb(204,51,51);">ri<tspan x="179.867px 195.798px ">vi</tspan>a</text>
+            </g>
+        </g>
+    </g>
+</svg>

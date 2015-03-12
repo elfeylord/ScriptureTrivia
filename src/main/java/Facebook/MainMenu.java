@@ -7,8 +7,11 @@ package Facebook;
 
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
+import facebook4j.Friend;
+import facebook4j.ResponseList;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,12 +41,34 @@ public class MainMenu extends HttpServlet {
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
         try {
             String name = facebook.getName();
+            request.setAttribute("user", name);
             response.getWriter().write("name:" + name);
         } catch (FacebookException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalStateException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            response.getWriter().write("<br>Friends: <br>");
+            List<Friend> friends = facebook.getFriends();
+            response.getWriter().write(friends.toString());
+            for (Friend friend: friends){
+                response.getWriter().write("Friend: " + friend.getName());
+            }
+        } catch (FacebookException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+            response.getWriter().write("Error: " + ex);
+        }
+        try {
+            ResponseList<Friend> friends = facebook.getFriends();
+            request.setAttribute("friends", friends);
+            for (Friend friend: friends){
+                response.getWriter().write("Friend: " + friend.getName());
+            }
+        } catch (FacebookException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        request.getRequestDispatcher("mainMenu.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
