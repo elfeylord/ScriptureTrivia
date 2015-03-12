@@ -14,11 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.social.config.annotation.ConnectionFactoryConfigurer;
-import org.springframework.social.connect.support.ConnectionFactoryRegistry;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.api.FacebookProfile;
-import org.springframework.social.facebook.api.impl.FacebookTemplate;
 
 /**
  *
@@ -38,18 +33,7 @@ public class FacebookAPI extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {        
-        String accessToken = "CAACEdEose0cBADyZB9d401GYLDQjgXxYZAgRhK4gH0L9JLAGZAEmyMnnOjZB8puajBsXJiLrLiBx5FqwtNCoWjZAsFq97eX3ZCgYdo3MUc9YaZAxR9F4FdeNUFZBD2UW1tIpxhM4NtP5jdDvPf62yRQYeo0xrHAqiJUhc3rYvuUfvl9lUoUrCwWXA3PoGgbFevLuilHXcr61ZAYd8ydKvpI3oUWJWzwUcdZAsZD";
-       Facebook facebook = new FacebookTemplate(accessToken, "Scripture Trivia");
-       List<FacebookProfile> facebookProfiles = facebook.friendOperations().getFriendProfiles();
-       
-       List<String> friendsNames = new ArrayList();
-       for (int i = 0; i < facebookProfiles.size(); i++){
-           friendsNames.add(facebookProfiles.get(i).getFirstName());
-       
-       }
-       
-       request.setAttribute("profiles", friendsNames);
-       request.getRequestDispatcher("Test2.jsp").forward(request, response);
+        
                
     }
 

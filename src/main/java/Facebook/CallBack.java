@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package Facebook;
+
 import facebook4j.Facebook;
-import facebook4j.FacebookFactory;
+import facebook4j.FacebookException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author cordondavies
  */
-@WebServlet(urlPatterns = {"/TestFacebookConnection"})
-public class TestFacebookConnection extends HttpServlet {
+@WebServlet(name = "CallBack", urlPatterns = {"/CallBack"})
+public class CallBack extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,14 +35,16 @@ public class TestFacebookConnection extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
+        String oauthCode = request.getParameter("code");
         
-        Facebook facebook = new FacebookFactory().getInstance();
-        request.getSession().setAttribute("facebook", facebook);
-        StringBuffer requestUrl = request.getRequestURL();
-        int lastSlashIndex = requestUrl.lastIndexOf("/");
-        String callBackUrl = requestUrl.substring(0, lastSlashIndex) + "/CallBack";
-        String facebookUrl = facebook.getOAuthAuthorizationURL(callBackUrl);
-        response.sendRedirect(facebookUrl);
+        try {
+            facebook.getOAuthAccessToken(oauthCode);
+        } catch (FacebookException ex) {
+            Logger.getLogger(CallBack.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        response.sendRedirect("MainMenu");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
