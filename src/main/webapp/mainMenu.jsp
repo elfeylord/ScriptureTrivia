@@ -45,6 +45,7 @@
 	</nav>
         <div class="container">
             <h1>Welcome ${user}!</h1>
+            ${friends}
         </div>
         
     </body>
