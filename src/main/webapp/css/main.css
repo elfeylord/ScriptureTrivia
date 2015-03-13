@@ -4,3 +4,13 @@
 .profile{
     height: 35px;
 }
+body{
+    background-image: url("../images/texturedarker-sm.jpg");
+    background-repeat: repeat;
+}
+.container{
+    background-color: whitesmoke;
+}
+.navbar-inverse{
+    background-image: -webkit-linear-gradient(top,#4C3A1F 0,#261500 100%);
+}

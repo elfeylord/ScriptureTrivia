@@ -43,7 +43,7 @@
 		    
 		</div>
 	</nav>
-        <div class="container">
+        <div class="container img-rounded">
             <h1>Welcome ${user}!</h1>
             ${friends}
         </div>
