@@ -37,7 +37,7 @@
 		    	<ul class="nav navbar-nav navbar-right">
 
 		        <li><a href="#">Log in</a></li>
-		        <li><a href="#">Register</a></li>
+		        <li><a class="navbar-brand brand-logo"><img class="img-rounded profile" src="${pic}"></a></li>
 	      	</ul>
 		    </div>
 		    

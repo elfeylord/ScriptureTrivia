@@ -11,6 +11,7 @@ import facebook4j.Friend;
 import facebook4j.ResponseList;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,12 @@ public class MainMenu extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
+        try {
+            URL profilePic = facebook.getPictureURL();
+            request.setAttribute("pic", profilePic);
+        } catch (FacebookException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             String name = facebook.getName();
             request.setAttribute("user", name);
