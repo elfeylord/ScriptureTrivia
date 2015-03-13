@@ -59,6 +59,7 @@ public class MainMenu extends HttpServlet {
             response.getWriter().write("<br>Friends: <br>");
             List<Friend> friends = facebook.getFriends();
             response.getWriter().write(friends.toString());
+            request.setAttribute("friends", friends.toString());
             for (Friend friend: friends){
                 response.getWriter().write("Friend: " + friend.getName());
             }
