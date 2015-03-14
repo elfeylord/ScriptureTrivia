@@ -54,6 +54,12 @@
                 </c:forEach>
                 </ul>
             </div>
+            <div>
+                <h2>Your turn:</h2>
+            </div>
+            <div>
+                <h2>Their turn:</h2>
+            </div>
         </div> 
     </body>
 </html>
