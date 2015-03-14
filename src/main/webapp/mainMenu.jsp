@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,16 +38,22 @@
 		    	<ul class="nav navbar-nav navbar-right">
 
 		        <li><a href="#">Log in</a></li>
-		        <li><a class="navbar-brand brand-logo"><img class="img-rounded profile" src="${pic}"></a></li>
+		        <li><a class="navbar-brand brand-logo"><img class="img-rounded profile" src="${profilePic}"></a></li>
 	      	</ul>
 		    </div>
 		    
 		</div>
 	</nav>
         <div class="container img-rounded">
-            <h1>Welcome ${user}!</h1>
-            ${friends}
-        </div>
-        
+            <h1>Welcome ${username}!</h1>
+            <div>
+                <h2>Your friends that play</h2>
+                <ul>
+                <c:forEach items="${friends}" var="friend">
+                    <li value = "${friend.id}"> ${friend.name}</li>
+                </c:forEach>
+                </ul>
+            </div>
+        </div> 
     </body>
 </html>

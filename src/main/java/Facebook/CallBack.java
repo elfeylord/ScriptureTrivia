@@ -35,6 +35,8 @@ public class CallBack extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //Get the facebook session variable
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
         String oauthCode = request.getParameter("code");
         
@@ -44,7 +46,7 @@ public class CallBack extends HttpServlet {
             Logger.getLogger(CallBack.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        response.sendRedirect("MainMenu");
+        response.sendRedirect("FacebookParser");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

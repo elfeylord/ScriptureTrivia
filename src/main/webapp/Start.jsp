@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Test
-    Created on : Mar 9, 2015, 12:52:55 PM
+    Document   : Start
+    Created on : Mar 11, 2015, 11:04:55 AM
     Author     : Cole
 --%>
 
@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>This is the test JSP</h1>
-        <a href ="FacebookAPI"> facebook test </a>
+        <h1>Log in (will have facebook login)</h1>
+        <a href ="LoadInformation">Log In</a>
     </body>
 </html>

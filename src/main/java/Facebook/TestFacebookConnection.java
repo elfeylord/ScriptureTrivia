@@ -34,6 +34,9 @@ public class TestFacebookConnection extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //Refactored this class, and made a new one -> FacebookLogin.java
+        //no longer needed. Delete if you feel the same. 
+        
         Facebook facebook = new FacebookFactory().getInstance();
         request.getSession().setAttribute("facebook", facebook);
         StringBuffer requestUrl = request.getRequestURL();

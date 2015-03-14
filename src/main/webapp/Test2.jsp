@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Test
-    Created on : Mar 9, 2015, 12:52:55 PM
+    Document   : Test2
+    Created on : Mar 9, 2015, 1:30:23 PM
     Author     : Cole
 --%>
 
@@ -12,7 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>This is the test JSP</h1>
-        <a href ="FacebookAPI"> facebook test </a>
+        <c:forEach items="${profiles}" var="post">
+     
+            <p>${post}</p>
+   
+          
+        </c:forEach>
     </body>
 </html>
