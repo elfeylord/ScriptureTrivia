@@ -11,48 +11,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Scriptures Trivia</title>
-        <link rel="icon" type="image/png" href="ScripturesTriviaLogo.png">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <jsp:include page="directives/linkedFiles.jsp" /> 
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-		      	</button>
-		      	<a class="navbar-brand brand-logo"><img class="img-rounded" src="STtitle.svg"></a>
-		    </div>
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      	<ul class="nav navbar-nav">
-                            <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
-		    	</ul>
-		    	<ul class="nav navbar-nav navbar-right">
-
-		        <li><a href="#">Log in</a></li>
-		        <li><a class="navbar-brand brand-logo"><img class="img-rounded profile" src="${profilePic}"></a></li>
-	      	</ul>
-		    </div>
-		    
-		</div>
-	</nav>
+        <jsp:include page="directives/header.jsp" /> 
         <div class="container img-rounded">
             <h1>Welcome ${username}!</h1>
             <div>
                 <h2>Your friends that play</h2>
-                <ul>
+                <div class="list-group">
                 <c:forEach items="${friends}" var="friend">
-                    <li class="list-group-item" onclick="confirmStart('${friend.name}','${friend.id}')"> ${friend.name} <!--<img class="img-rounded" src="test"/>--></li>
+                    <a href="#" class="list-group-item" onclick="confirmStart('${friend.name}','${friend.id}')"> ${friend.name} <!--<img class="img-rounded" src="test"/>--></a>
                 </c:forEach>
-                </ul>
+                </div>
             </div>
             <div>
                 <h2>Your turn:</h2>
@@ -62,9 +33,8 @@
             </div>
         </div>
             
-            <script src="jquery-2.1.3.min.js"></script>
-            <script src="bootstrap.min.js"></script>
-            <script src="prompt.js" type="text/javascript"></script>
-            <script src="bootbox.min.js" type="text/javascript"></script>
+        <jsp:include page="directives/Script.jsp" />
+        <script src="js/prompt.js" type="text/javascript"></script>
+        <script src="js/bootbox.min.js" type="text/javascript"></script>
     </body>
 </html>
