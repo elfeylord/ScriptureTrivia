@@ -46,7 +46,7 @@ public class FacebookParser extends HttpServlet {
         //get the facebook profile picture
         try {
             URL profilePic = facebook.getPictureURL();
-            request.setAttribute("profilePic", profilePic);
+            request.getSession().setAttribute("profilePic", profilePic);
         } 
         catch (FacebookException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
