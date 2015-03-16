@@ -40,12 +40,12 @@ public class MainMenu extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
-        try {
-            URL profilePic = facebook.getPictureURL();
-            request.setAttribute("pic", profilePic);
-        } catch (FacebookException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            URL profilePic = facebook.getPictureURL();
+//            request.setAttribute("pic", profilePic);
+//        } catch (FacebookException ex) {
+//            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         try {
             String name = facebook.getName();
             request.setAttribute("user", name);
@@ -54,18 +54,6 @@ public class MainMenu extends HttpServlet {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalStateException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            response.getWriter().write("<br>Friends: <br>");
-            List<Friend> friends = facebook.getFriends();
-            response.getWriter().write(friends.toString());
-            request.setAttribute("friends", friends.toString());
-            for (Friend friend: friends){
-                response.getWriter().write("Friend: " + friend.getName());
-            }
-        } catch (FacebookException ex) {
-            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
-            response.getWriter().write("Error: " + ex);
         }
         try {
             ResponseList<Friend> friends = facebook.getFriends();

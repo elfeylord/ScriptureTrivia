@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Facebook;
-
 /**
  *
  * @author Cole
@@ -12,10 +11,12 @@ package Facebook;
 public class FacebookFriend {
     private String name;
     private String id;
+    private String profile;
 
     public FacebookFriend(){
         name = "";
         id = "";
+        profile = ""; //src url to profile pic
     }
 
     public String getName() {
@@ -33,5 +34,14 @@ public class FacebookFriend {
     public void setId(String id) {
         this.id = id;
     }
+    
+    public String getProfile(){
+       return profile;
+    }
+    
+    public void setProfile(String profile){
+        this.profile = profile;
+    }
+    
     
 }

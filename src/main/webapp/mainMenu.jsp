@@ -50,7 +50,7 @@
                 <h2>Your friends that play</h2>
                 <ul>
                 <c:forEach items="${friends}" var="friend">
-                    <li value = "${friend.id}"> ${friend.name}</li>
+                    <li class="list-group-item" onclick="confirmStart('${friend.name}','${friend.id}')"> ${friend.name} <!--<img class="img-rounded" src="test"/>--></li>
                 </c:forEach>
                 </ul>
             </div>
@@ -60,6 +60,11 @@
             <div>
                 <h2>Their turn:</h2>
             </div>
-        </div> 
+        </div>
+            
+            <script src="jquery-2.1.3.min.js"></script>
+            <script src="bootstrap.min.js"></script>
+            <script src="prompt.js" type="text/javascript"></script>
+            <script src="bootbox.min.js" type="text/javascript"></script>
     </body>
 </html>
