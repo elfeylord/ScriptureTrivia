@@ -19,10 +19,14 @@
         <div class="container img-rounded">
             <h1>Category: ${category}</h1>
             <h2>${question}</h2>
-            <c:forEach items="${answerList}" var="answer">
-                <div> ${answer}</div>
-            </c:forEach>
+            <div class="list-group">
+                <c:forEach items="${answerList}" var="answer" varStatus="loop">
+                    <a id="ans${loop.index}" onclick="checkAnswer('${loop.index}')" href="#" class="list-group-item ans"> ${answer}</a>
+                </c:forEach>
+            </div>
         </div>
         <jsp:include page="directives/Script.jsp" />
+        <script src="js/jquery.redirect.js"></script>
+        <script src="js/game.js"></script>
     </body>
 </html>

@@ -1,9 +1,10 @@
 var speed = 50;
 var slowDown = false;
-var category = "Old Testament";
+var category = 1;
+var categories = ["Old Testament", "Book of Mormon", "Doctrine &amp; Covenants", "General Conference", "New Testament"];
 function spin(){
     var pos = $(".spinner").css("background-position-y");
-    if (parseInt(pos)>1650){
+    if (parseInt(pos)>(300*categories.length)+150){
         pos = 150;
     };
     if (slowDown){
@@ -11,9 +12,9 @@ function spin(){
         if(speed <= 0){
            clearInterval(spinner);
            if(parseInt(pos)==150){
-               category = "Book of Mormon";
+               category = 0;
            }
-            setTimeout(function(){ $.redirect('/ScriptureTrivia/Game', {'category': category}); }, 2000);
+            setTimeout(function(){ $.redirect('/ScriptureTrivia/Game', {'category': categories[category]}); }, 2000);
         }
     }
     $(".spinner").css("background-position-y", parseInt(pos)+speed +"px");

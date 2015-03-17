@@ -8,9 +8,11 @@
         <jsp:include page="directives/linkedFiles.jsp" /> 
     </head>
     <body>
-        <jsp:include page="directives/header.jsp" /><div class="top-fade"></div>
-        <div class="bottom-fade"></div>
-        <div onclick="stop();" class="spinner">
+        <jsp:include page="directives/header.jsp" />
+        <div onclick="stop();" class="point">
+            <div class="top-fade"></div>
+            <div class="bottom-fade"></div>
+            <div class="spinner"></div>
         </div>
         <jsp:include page="directives/Script.jsp" />
             <script src="js/jquery.redirect.js"></script>
