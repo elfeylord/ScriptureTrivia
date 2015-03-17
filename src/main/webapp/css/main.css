@@ -10,6 +10,7 @@ body{
 }
 .container{
     background-color: whitesmoke;
+    clear: both;
 }
 .navbar-inverse{
     background-image: -webkit-linear-gradient(top,#4C3A1F 0,#261500 100%);
@@ -46,4 +47,8 @@ body{
 }
 .point{
     cursor: pointer;
+}
+.timer{
+    color:white;
+    font-size: 60px;
 }

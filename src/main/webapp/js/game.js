@@ -1,16 +1,39 @@
+var countdown = 15;
 function checkAnswer(id){
     if(!$('#ans'+id).attr("disabled")){
         if(id != 0){
             //If wrong
             $('#ans'+id).css("background-color", "#f2dede")
-            setTimeout(function(){window.location.href = "FacebookParser"}, 2000);
+            wrong();
         }
         else{
             //If correct
-            setTimeout(function(){ $.redirect('/ScriptureTrivia/Category', {'correct': true}); }, 2000);
+            correct();
         }
-        $('#ans0').css("background-color", "#dff0d8");
-        $('.ans').attr( "disabled", "true" );
+        showAnswer();
     }
     
 }
+function wrong(){
+    setTimeout(function(){window.location.href = "FacebookParser"}, 2000);
+}
+
+function correct(){ 
+    setTimeout(function(){ $.redirect('/ScriptureTrivia/Category', {'correct': true}); }, 2000);
+}
+function showAnswer(){
+    console.log("colormepink");
+    $('#ans0').css("background-color", "#dff0d8");
+    $('.ans').attr( "disabled", "true" );
+}
+
+var timer = setInterval(function() {
+    $("#countdown").html(countdown);
+    countdown--;
+    if(countdown <= -1){
+        wrong();
+        $('.ans').css("background-color", "#f2dede")
+        showAnswer();
+        clearInterval(timer);
+    }
+}, 1000);

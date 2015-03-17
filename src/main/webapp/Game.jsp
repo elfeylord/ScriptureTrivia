@@ -15,6 +15,7 @@
     </head>
     <body>
         <jsp:include page="directives/header.jsp" />
+        <div id="countdown" class="pull-right timer">15</div>
         
         <div class="container img-rounded">
             <h1>Category: ${category}</h1>
