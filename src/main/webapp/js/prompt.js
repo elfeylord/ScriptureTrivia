@@ -7,7 +7,7 @@ function confirmStart(name, id){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            window.location = "/ScriptureTrivia/Game";
+            window.location = "/ScriptureTrivia/Category";
           }
         },
         danger: {

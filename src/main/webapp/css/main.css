@@ -14,3 +14,33 @@ body{
 .navbar-inverse{
     background-image: -webkit-linear-gradient(top,#4C3A1F 0,#261500 100%);
 }
+.spinner{
+    background-image: url("../images/spinner.svg");
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    background-position: center;
+    background-position-y: -20px;
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0px;
+    z-index: 50;
+}
+.top-fade{
+    background-image: url("../images/topfade.png");
+    background-repeat: repeat-x;
+    height: 200px;
+    width: 100%;
+    position:absolute;
+    top:0px;
+    z-index: 150;
+}
+.bottom-fade{
+    background-image: url("../images/bottomfade.png");
+    background-repeat: repeat-x;
+    height: 200px;
+    width: 100%;
+    position:absolute;
+    bottom:0px;
+    z-index: 151;
+}

@@ -14,14 +14,14 @@
         <jsp:include page="directives/linkedFiles.jsp" /> 
     </head>
     <body>
-        <jsp:include page="directives/header.jsp" /> 
+        <jsp:include page="directives/header.jsp" />
+        
         <div class="container img-rounded">
             <h1>${question}</h1>
             <c:forEach items="${answerList}" var="answer">
                 <div> ${answer}</div>
             </c:forEach>
         </div>
-        
-            <jsp:include page="directives/Script.jsp" />
+        <jsp:include page="directives/Script.jsp" />
     </body>
 </html>
