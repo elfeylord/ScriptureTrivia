@@ -12,7 +12,8 @@
         <div class="bottom-fade"></div>
         <div onclick="stop();" class="spinner">
         </div>
-            <script src="js/spinner.js"></script>
         <jsp:include page="directives/Script.jsp" />
+            <script src="js/jquery.redirect.js"></script>
+            <script src="js/spinner.js"></script>
     </body>
 </html>

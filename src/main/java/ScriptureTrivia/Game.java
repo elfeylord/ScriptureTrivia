@@ -44,6 +44,8 @@ public class Game extends HttpServlet {
         List<String> answerString = questionObj.getAnswerList();
         String question = questionObj.getQuestion();
         
+        String category = request.getParameter("category");
+        request.setAttribute("category", category);
         request.setAttribute("answerList", answerString);
         request.setAttribute("question", question);
         

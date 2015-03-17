@@ -17,7 +17,8 @@
         <jsp:include page="directives/header.jsp" />
         
         <div class="container img-rounded">
-            <h1>${question}</h1>
+            <h1>Category: ${category}</h1>
+            <h2>${question}</h2>
             <c:forEach items="${answerList}" var="answer">
                 <div> ${answer}</div>
             </c:forEach>
