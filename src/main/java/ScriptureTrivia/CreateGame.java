@@ -33,11 +33,11 @@ public class CreateGame extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //int friendId = (int) request.getAttribute("friendId");
-        //String friendName = (String) request.getAttribute("friendName");
+        //int friendId = (int) request.getAttribute("id");
+        //String friendName = (String) request.getAttribute("name");
         int friendId = 1;
         String friendName = "TEST";
-        
+        //make it get from the database instead of make its own new one.
         CurrentGame newGame = new CurrentGame(friendName);
         
         request.setAttribute("game", newGame);
