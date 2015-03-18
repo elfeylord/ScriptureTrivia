@@ -64,7 +64,7 @@ public class MainMenu extends HttpServlet {
         } catch (FacebookException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("mainMenu.jsp").forward(request, response);
+        //request.getRequestDispatcher("mainMenu.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

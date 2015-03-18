@@ -22,5 +22,45 @@ public class CurrentGame {
     private String friendName;
     private int friendScore;
     private int yourScore;
+
+    public boolean isYourTurn() {
+        return yourTurn;
+    }
+
+    public void setYourTurn(boolean yourTurn) {
+        this.yourTurn = yourTurn;
+    }
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
+    public String getFriendName() {
+        return friendName;
+    }
+
+    public void setFriendName(String friendName) {
+        this.friendName = friendName;
+    }
+
+    public int getFriendScore() {
+        return friendScore;
+    }
+
+    public void setFriendScore(int friendScore) {
+        this.friendScore = friendScore;
+    }
+
+    public int getYourScore() {
+        return yourScore;
+    }
+
+    public void setYourScore(int yourScore) {
+        this.yourScore = yourScore;
+    }
     
 }

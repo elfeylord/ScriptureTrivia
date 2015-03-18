@@ -5,6 +5,8 @@
  */
 package Facebook;
 
+import Database.CurrentGame;
+import Database.DatabaseAccess;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
 import facebook4j.Friend;
@@ -83,8 +85,16 @@ public class FacebookParser extends HttpServlet {
         catch (FacebookException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
+               
+        DatabaseAccess myDB = new DatabaseAccess();
         
+        //send the list to the main menu.
+        //the ID is hard coded
+        List<CurrentGame> yourGames = (List<CurrentGame>)myDB.getYourGameList(1);
+        List<CurrentGame> theirGames = (List<CurrentGame>)myDB.getTheirGameList(1);
         
+        request.setAttribute("yourGames", yourGames);
+        request.setAttribute("theirGames", theirGames);
         
         //Send the friends
         request.getRequestDispatcher("mainMenu.jsp").forward(request, response);

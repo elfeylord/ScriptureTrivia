@@ -27,9 +27,15 @@
             </div>
             <div>
                 <h2>Your turn:</h2>
+                <c:forEach items="${yourGames}" var="yourGame">
+                    <p>${yourGame.friendName}</p>
+                </c:forEach>
             </div>
             <div>
                 <h2>Their turn:</h2>
+                <c:forEach items="${theirGames}" var="theirGame">
+                    <p>${theirGame.friendName}</p>
+                </c:forEach>
             </div>
         </div>
             
