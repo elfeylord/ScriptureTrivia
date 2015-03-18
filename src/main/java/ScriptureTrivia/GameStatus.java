@@ -5,6 +5,7 @@
  */
 package ScriptureTrivia;
 
+import Database.CurrentGame;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,6 +35,9 @@ public class GameStatus extends HttpServlet {
         String correct = request.getParameter("correct");
         
         if (correct == "true"){
+            CurrentGame game = (CurrentGame)request.getSession().getAttribute("game");
+            game.setYourScore(game.getYourScore() + 1);
+            request.getSession().setAttribute("game", game);
             response.sendRedirect("Category");
         }
         else
