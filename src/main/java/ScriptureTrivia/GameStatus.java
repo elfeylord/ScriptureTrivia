@@ -37,8 +37,8 @@ public class GameStatus extends HttpServlet {
         if (correct == "true"){
             CurrentGame game = (CurrentGame)request.getSession().getAttribute("game");
             game.setYourScore(game.getYourScore() + 1);
-            request.getSession().setAttribute("game", game);
-            response.sendRedirect("Category");
+            request.setAttribute("game", game);
+            request.getRequestDispatcher("Category").forward(request, response);
         }
         else
         {
