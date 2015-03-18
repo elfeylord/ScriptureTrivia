@@ -7,7 +7,28 @@ function confirmStart(name, id){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            window.location = "/ScriptureTrivia/Category";
+            $.redirect("/ScriptureTrivia/CreateGame", {'id': id, 'name': name});
+          }
+        },
+        danger: {
+          label: "No",
+          className: "btn-default",
+          callback: function() {
+          }
+        }
+      }
+    });
+}
+function confirmCont(name, gameId){
+    bootbox.dialog({
+      message: "Continue game with " + name + "?",
+      title: "Friend Challenge",
+      buttons: {
+        success: {
+          label: "Yes",
+          className: "btn-success",
+          callback: function() {
+            $.redirect("/ScriptureTrivia/LoadGame", {'gameId': gameId});
           }
         },
         danger: {

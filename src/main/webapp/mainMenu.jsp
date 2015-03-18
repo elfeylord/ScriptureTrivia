@@ -28,13 +28,13 @@
             <div>
                 <h2>Your turn:</h2>
                 <c:forEach items="${yourGames}" var="yourGame">
-                    <p>${yourGame.friendName}</p>
+                    <a href="#" onclick="confirmCont('${yourGame.friendName}','${yourGame.gameId}')" class="list-group-item">${yourGame.friendName}</a>
                 </c:forEach>
             </div>
             <div>
                 <h2>Their turn:</h2>
                 <c:forEach items="${theirGames}" var="theirGame">
-                    <p>${theirGame.friendName}</p>
+                    <a disabled="disabled" href="#" class="list-group-item">${theirGame.friendName}</a>
                 </c:forEach>
             </div>
         </div>
@@ -42,5 +42,6 @@
         <jsp:include page="directives/Script.jsp" />
         <script src="js/prompt.js" type="text/javascript"></script>
         <script src="js/bootbox.min.js" type="text/javascript"></script>
+            <script src="js/jquery.redirect.js"></script>
     </body>
 </html>

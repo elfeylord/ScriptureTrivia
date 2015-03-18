@@ -18,6 +18,7 @@
         <div id="countdown" class="pull-right timer">15</div>
         
         <div class="container img-rounded">
+            <h3 class="pull-right">${game.yourScore}</h3>
             <h1>Category: ${category}</h1>
             <h2>${question}</h2>
             <div class="list-group">
