@@ -34,16 +34,16 @@ public class GameStatus extends HttpServlet {
             throws ServletException, IOException {
         String correct = request.getParameter("correct");
         
-        if (correct == "true"){
+        if ("true".equals(correct)){
             
             String friendName = "TEST";
         //make it get from the database instead of make its own new one.
-        CurrentGame newGame = new CurrentGame(friendName);
-        
-        request.setAttribute("game", newGame);
-        
-        request.getRequestDispatcher("Category").forward(request, response);
-            
+//        CurrentGame newGame = new CurrentGame(friendName);
+//        
+//        request.setAttribute("game", newGame);
+//        
+//        request.getRequestDispatcher("Category").forward(request, response);
+//            
             
             
             
