@@ -22,6 +22,11 @@ public class DatabaseAccess {
         TriviaQuestion sendQuestion = new TriviaQuestion("Why did Ananias die?", "He lied", "He was persecuted by the Romans", "He was sick of the palsy", "He had leprosy");
         return sendQuestion;
     }
+    public CurrentGame getGame(int gameId){
+        //get from DB
+        CurrentGame game = new CurrentGame(true, gameId, "FRIEND NAME", 14, 12);
+        return game;
+    }
     public List<CurrentGame> getYourGameList(int userId){
         
         List<CurrentGame> listReturn = new ArrayList();
@@ -35,7 +40,8 @@ public class DatabaseAccess {
         CurrentGame game = new CurrentGame(false, 3, "Justin", 4, 7);
         List<CurrentGame> listReturn = new ArrayList();
         listReturn.add(game);
-         game = new CurrentGame(false, 4, "Cordon", 4, 1);
+        game = new CurrentGame(false, 4, "Cordon", 4, 1);
+        listReturn.add(game);
         return listReturn;
     }
     public List<CurrentGame> getGameList(int userId){

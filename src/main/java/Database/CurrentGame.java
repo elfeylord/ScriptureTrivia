@@ -10,6 +10,15 @@ package Database;
  * @author Cole
  */
 public class CurrentGame {
+    public CurrentGame (String friendName){
+        //CREATE NEW FROM DATABASE
+        this.friendName = friendName;
+        //hard coded
+        this.friendScore = 0;
+        this.gameId = 0;
+        this.yourScore = 0;
+        this.yourTurn = true;
+    }
     public CurrentGame(boolean yourTurn, int gameId, String friendName, int friendScore, int yourScore){
         this.yourTurn = yourTurn;
         this.gameId = gameId;
