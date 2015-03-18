@@ -1,4 +1,7 @@
 var countdown = 15;
+var bookofmormon_song = new Audio("sounds/TheGoldenPlates.mp3");
+    bookofmormon_song.play()
+    bookofmormon_song.loop = true;
 function checkAnswer(id){
     if(!$('#ans'+id).attr("disabled")){
         if(id != 0){
