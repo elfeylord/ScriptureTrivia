@@ -35,18 +35,7 @@ public class GameStatus extends HttpServlet {
         String correct = request.getParameter("correct");
         
         if (correct == "true"){
-            
-            String friendName = "TEST";
-        //make it get from the database instead of make its own new one.
-        CurrentGame newGame = new CurrentGame(friendName);
-        
-        request.setAttribute("game", newGame);
-        
-        request.getRequestDispatcher("Category").forward(request, response);
-            
-            
-            
-            
+                        
             CurrentGame game = (CurrentGame)request.getSession().getAttribute("game");
             game.setYourScore(game.getYourScore() + 1);
             request.setAttribute("game", game);
