@@ -16,7 +16,7 @@
         <jsp:include page="directives/header.jsp" /> 
         <div class="container img-rounded">
             <h1>Welcome to Scripture Trivia</h1>
-            <a href ="FacebookLogin">Log in with your facebook account</a>
+            <a class="btn btn-facebook" href ="FacebookLogin">Log in with your facebook account</a>
         </div>
     </body>
 </html>
