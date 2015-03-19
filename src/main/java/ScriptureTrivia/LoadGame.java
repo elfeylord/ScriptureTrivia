@@ -38,10 +38,10 @@ public class LoadGame extends HttpServlet {
         String gameId = request.getParameter("gameId");
         
         DatabaseAccess myDB = new DatabaseAccess();
-        CurrentGame myGame = myDB.getGame(gameId);
+        CurrentGame myGame = myDB.getGame(Integer.parseInt(gameId));
         if (myGame.getFriendScore() >= 21)
         {
-            //remove the game
+            myDB.removeGame(myGame.getGameId());
             //redirect to lost page.
         }
         else
