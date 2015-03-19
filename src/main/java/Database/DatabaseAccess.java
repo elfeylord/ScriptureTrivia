@@ -27,7 +27,7 @@ public class DatabaseAccess {
     }
     public CurrentGame getGame(int gameId){
         //get from DB
-        CurrentGame game = new CurrentGame(true, 2, "FRIEND NAME", 20, 20);
+        CurrentGame game = new CurrentGame(true, 2, "FRIEND NAME", 21, 21);
         return game;
     }
     public CurrentGame createNewGame(String yourName, String friendName, String friendId){

@@ -42,7 +42,7 @@ public class LoadGame extends HttpServlet {
         if (myGame.getFriendScore() >= 21)
         {
             myDB.removeGame(myGame.getGameId());
-            //redirect to lost page.
+            request.getRequestDispatcher("lose.jsp").forward(request, response);
         }
         else
         {
