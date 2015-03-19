@@ -22,9 +22,9 @@ public class DatabaseAccess {
         TriviaQuestion sendQuestion = new TriviaQuestion("Why did Ananias die?", "He lied", "He was persecuted by the Romans", "He was sick of the palsy", "He had leprosy");
         return sendQuestion;
     }
-    public CurrentGame getGame(int gameId){
+    public CurrentGame getGame(String gameId){
         //get from DB
-        CurrentGame game = new CurrentGame(true, gameId, "FRIEND NAME", 14, 12);
+        CurrentGame game = new CurrentGame(true, 2, "FRIEND NAME", 14, 12);
         return game;
     }
     public CurrentGame createNewGame(String yourName, String friendName, String friendId){

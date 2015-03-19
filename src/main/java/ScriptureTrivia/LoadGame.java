@@ -34,16 +34,24 @@ public class LoadGame extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int gameId = 0;
-        //int gameId = (int) request.getAttribute("gameId");
+        
+        String gameId = request.getParameter("gameId");
         
         DatabaseAccess myDB = new DatabaseAccess();
         CurrentGame myGame = myDB.getGame(gameId);
+        if (myGame.getFriendScore() >= 21)
+        {
+            //remove the game
+            //redirect to lost page.
+        }
+        else
+        {
         
-        request.setAttribute("game", myGame);
-        request.getRequestDispatcher("Category").forward(request, response);
+            request.setAttribute("game", myGame);
+            request.getRequestDispatcher("Category").forward(request, response);
+    
+        }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
