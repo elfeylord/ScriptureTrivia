@@ -29,8 +29,8 @@ public class DatabaseAccess {
     }
     public CurrentGame createNewGame(String yourName, String friendName, String friendId){
     
-        
-        return
+        CurrentGame game = new CurrentGame(true, 0, friendName, 0, 0);
+        return game;
     }
     public List<CurrentGame> getYourGameList(int userId){
         
