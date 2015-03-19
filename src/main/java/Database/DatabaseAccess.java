@@ -32,7 +32,7 @@ public class DatabaseAccess {
     }
     public CurrentGame createNewGame(String yourName, String friendName, String friendId){
     
-        CurrentGame game = new CurrentGame(true, 0, friendName, 0, 0);
+        CurrentGame game = new CurrentGame(true, 0, friendName, 20, 20);
         return game;
     }
     public List<CurrentGame> getYourGameList(int userId){

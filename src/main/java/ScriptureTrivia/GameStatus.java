@@ -8,6 +8,8 @@ package ScriptureTrivia;
 import Database.CurrentGame;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,22 +39,19 @@ public class GameStatus extends HttpServlet {
                        
         
         if ("true".equals(correct)){
-            
-            String friendName = "TEST";
-        //make it get from the database instead of make its own new one.
-//        CurrentGame newGame = new CurrentGame(friendName);
-//        
-//        request.setAttribute("game", newGame);
-//        
-//        request.getRequestDispatcher("Category").forward(request, response);
-//            
-            
-            
-            
             CurrentGame game = (CurrentGame)request.getSession().getAttribute("game");
             game.setYourScore(game.getYourScore() + 1);
-            request.setAttribute("game", game);
-            request.getRequestDispatcher("Category").forward(request, response);
+            if (game.getYourScore() >= 21)
+            {
+                game.setYourTurn(false);
+                response.sendRedirect("win.jsp");
+                
+            }
+            else
+            {
+                request.setAttribute("game", game);
+                request.getRequestDispatcher("Category").forward(request, response);
+            }
         }
         else
         {
