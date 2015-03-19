@@ -34,8 +34,8 @@ public class CreateGame extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String friendId = request.getParameter("friendId");
-        String friendName = request.getParameter("friendName");
+        String friendId = request.getParameter("id");
+        String friendName = request.getParameter("name");
         
         DatabaseAccess myDB = new DatabaseAccess();
         
