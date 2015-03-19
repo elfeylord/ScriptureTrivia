@@ -6,6 +6,7 @@
 package ScriptureTrivia;
 
 import Database.CurrentGame;
+import Database.DatabaseAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,12 +34,13 @@ public class CreateGame extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //int friendId = (int) request.getAttribute("id");
-        //String friendName = (String) request.getAttribute("name");
-        int friendId = 1;
-        String friendName = "TEST";
+        String friendId = request.getParameter("friendId");
+        String friendName = request.getParameter("friendName");
+        
+        DatabaseAccess myDB = new DatabaseAccess();
+        
         //make it get from the database instead of make its own new one.
-        CurrentGame newGame = new CurrentGame(friendName);
+        CurrentGame newGame = myDB.createNewGame("MY NAME", friendName, friendId);
         
         request.setAttribute("game", newGame);
         

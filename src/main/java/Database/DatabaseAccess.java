@@ -27,6 +27,11 @@ public class DatabaseAccess {
         CurrentGame game = new CurrentGame(true, gameId, "FRIEND NAME", 14, 12);
         return game;
     }
+    public CurrentGame createNewGame(String yourName, String friendName, String friendId){
+    
+        
+        return
+    }
     public List<CurrentGame> getYourGameList(int userId){
         
         List<CurrentGame> listReturn = new ArrayList();
