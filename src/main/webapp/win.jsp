@@ -19,7 +19,7 @@
             <h1>You Win!</h1>
             <h2>Gloat your bragging rights amongst your friends!</h2>
             
-            <a class="btn btn-facebook" href="#">Share on Facebook</a>
+            <a class="btn btn-facebook" href="Share">Share on Facebook</a>
         </div>
         <jsp:include page="directives/Script.jsp" />
         <script src="js/jquery.redirect.js"></script>

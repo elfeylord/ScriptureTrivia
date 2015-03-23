@@ -6,7 +6,7 @@ function checkAnswer(id){
     if(!$('#ans'+id).attr("disabled")){
         if(id != 0){
             //If wrong
-            $('#ans'+id).css("background-color", "red")
+            $('#ans'+id).css("background-color", "#FF4B46")
             wrong();
         }
         else{
@@ -25,7 +25,7 @@ function correct(){
     setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "true"}); }, 2000);
 }
 function showAnswer(){
-    $('#ans0').css("background-color", "green");
+    $('#ans0').css("background-color", "#87E864");
     $('.ans').attr( "disabled", "true" );
 }
 
@@ -34,7 +34,7 @@ var timer = setInterval(function() {
     countdown--;
     if(countdown <= -1){
         wrong();
-        $('.ans').css("background-color", "red")
+        $('.ans').css("background-color", "#FF4B46")
         showAnswer();
         clearInterval(timer);
     }
