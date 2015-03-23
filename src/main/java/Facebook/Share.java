@@ -5,8 +5,14 @@
  */
 package Facebook;
 
+import Database.CurrentGame;
+import facebook4j.Facebook;
+import facebook4j.FacebookException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,19 +37,16 @@ public class Share extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Share</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Share at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
+        CurrentGame myGame = (CurrentGame)request.getSession().getAttribute("game");
+        try {
+            facebook.postStatusMessage("I just smashed " + myGame.getFriendName() + " on Scripture Trivia! You should play too!!");
+        } catch (FacebookException ex) {
+            Logger.getLogger(Share.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        response.sendRedirect("FacebookParser");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
