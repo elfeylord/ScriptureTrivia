@@ -59,3 +59,12 @@ body{
 .container{
     padding-bottom: 15px;
 }
+.list-group > a.disabled {
+  color: #666;
+}
+.list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+  color: #666;
+  text-decoration: none;
+  background-color: transparent;
+  cursor:default;
+}

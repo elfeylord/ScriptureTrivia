@@ -28,13 +28,13 @@
             <div>
                 <h2>Your turn:</h2>
                 <c:forEach items="${yourGames}" var="yourGame">
-                    <a href="#" onclick="confirmCont('${yourGame.friendName}','${yourGame.gameId}')" class="list-group-item">${yourGame.friendName}</a>
+                    <a href="#" onclick="confirmCont('${yourGame.friendName}','${yourGame.gameId}')" class="list-group-item">${yourGame.friendName}<span class="pull-right">${yourGame.getYourScore()}-${yourGame.friendScore}</span></a>
                 </c:forEach>
             </div>
             <div>
                 <h2>Their turn:</h2>
                 <c:forEach items="${theirGames}" var="theirGame">
-                    <a disabled="disabled" href="#" class="list-group-item">${theirGame.friendName}</a>
+                    <a class="list-group-item disabled">${theirGame.friendName}<span class="pull-right">${yourGame.getYourScore()}-${yourGame.friendScore}</span></a>
                 </c:forEach>
             </div>
         </div>

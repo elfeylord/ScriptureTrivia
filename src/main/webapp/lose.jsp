@@ -19,7 +19,7 @@
             <h1>You Lost!</h1>
             <h2>Better luck next time!</h2>
             
-            <a class="btn btn-success" href="#">Start a new game with -friend-</a>
+            <a class="btn btn-success" href="#" onclick="$.redirect('/ScriptureTrivia/CreateGame', {'id': '${myGame.id}', 'name': 'name'});">Start a new game with -friend-</a>
         </div>
         <jsp:include page="directives/Script.jsp" />
         <script src="js/jquery.redirect.js"></script>
