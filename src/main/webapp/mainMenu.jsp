@@ -34,7 +34,7 @@
             <div>
                 <h2>Their turn:</h2>
                 <c:forEach items="${theirGames}" var="theirGame">
-                    <a class="list-group-item disabled">${theirGame.friendName}<span class="pull-right">${yourGame.getYourScore()}-${yourGame.friendScore}</span></a>
+                    <a class="list-group-item disabled">${theirGame.friendName}<span class="pull-right">${theirGame.getYourScore()}-${theirGame.friendScore}</span></a>
                 </c:forEach>
             </div>
         </div>
