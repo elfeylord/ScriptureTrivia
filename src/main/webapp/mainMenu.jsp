@@ -21,7 +21,7 @@
                 <h2>Your friends that play</h2>
                 <div class="list-group">
                 <c:forEach items="${friends}" var="friend">
-                    <a href="#" class="list-group-item" onclick="confirmStart('${friend.name}','${friend.id}')"> ${friend.name} <!--<img class="img-rounded" src="test"/>--></a>
+                    <a href="#" class="list-group-item" onclick="confirmStart('${friend.name}','${friend.id}')"><img class="img-rounded profile" src="https://graph.facebook.com/${friend.id}/picture"/> ${friend.name} </a>
                 </c:forEach>
                 </div>
             </div>
