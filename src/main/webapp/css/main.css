@@ -96,3 +96,17 @@ body{
     position: absolute;
     left:50%;
 }
+.marker-left{
+    position:absolute;
+    top:150px;
+    left:34%;
+    z-index: 500;
+    height:50px;
+}
+.marker-right{
+    position:absolute;
+    top:150px;
+    right:34%;
+    z-index: 500;
+    height:50px;
+}

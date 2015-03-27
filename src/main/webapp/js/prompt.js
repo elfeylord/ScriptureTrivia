@@ -7,7 +7,7 @@ function confirmStart(name, id){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            $.redirect("/ScriptureTrivia/CreateGame", {'id': id, 'name': name});
+            $.redirect("CreateGame", {'id': id, 'name': name});
           }
         },
         danger: {
@@ -28,7 +28,7 @@ function confirmCont(name, gameId){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            $.redirect("/ScriptureTrivia/LoadGame", {'gameId': gameId});
+            $.redirect("LoadGame", {'gameId': gameId});
           }
         },
         danger: {

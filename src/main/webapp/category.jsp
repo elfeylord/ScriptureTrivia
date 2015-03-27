@@ -12,6 +12,8 @@
         <div onclick="stop();" class="point">
             <div class="top-fade"></div>
             <div class="bottom-fade"></div>
+            <img class="marker-left" src="images/markerleft.svg">
+            <img class="marker-right" src="images/markerright.svg">
             <div class="spinner"></div>
         </div>
         <jsp:include page="directives/Script.jsp" />
