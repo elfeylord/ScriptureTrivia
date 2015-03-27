@@ -15,6 +15,7 @@
     </head>
     <body>
         <jsp:include page="directives/header.jsp" />
+        <img class="img-rounded pl1" src="${profilePic}"/><h1 class="verses">Vs.</h1><img class="img-rounded pl2" src="https://graph.facebook.com/${game.friendId}/picture"/>
         <div id="countdown" class="pull-right timer">15</div>
         
         <div class="container img-rounded">
