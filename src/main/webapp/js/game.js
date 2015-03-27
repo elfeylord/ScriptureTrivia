@@ -27,14 +27,14 @@ function wrong(){
     result="wrong";
     song.pause();
     wrongsound.play();
-    setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "false"}); }, 2000);
+    setTimeout(function(){ $.redirect('GameStatus', {'correct': "false"}); }, 2000);
 }
 
 function correct(){ 
     result="correct";
     song.pause();
     rightsound.play();
-    setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "true"}); }, 2000);
+    setTimeout(function(){ $.redirect('GameStatus', {'correct': "true"}); }, 2000);
 }
 function showAnswer(){
     clearInterval(timer);

@@ -31,7 +31,7 @@ function spin(){
            clearInterval(loopsound);
            
            category = ((finalPos-100)/300)-1;
-            setTimeout(function(){ $.redirect('/ScriptureTrivia/Game', {'category': categories[category]}); }, 2000);
+            setTimeout(function(){ $.redirect('Game', {'category': categories[category]}); }, 2000);
         }
     }
     $(".spinner").css("background-position-y", parseInt(pos)+speed +"px");
