@@ -1,4 +1,5 @@
 var countdown = 15;
+var result;
 var songnames = ["TheGoldenPlates.mp3", "TheHandcartSong.mp3", "scrpowr.mp3"];
 var randomPick = Math.floor(Math.random() * songnames.length);
 var song = new Audio("sounds/"+ songnames[randomPick]);
@@ -8,13 +9,14 @@ var rightsound = new Audio("sounds/Correct-answer.mp3");
     song.loop = true;
 function checkAnswer(id){
     if(!$('#ans'+id).attr("disabled")){
-        if(id != 0){
+        if(id != 0 && !result){
             //If wrong
             $('#ans'+id).css("background-color", "#FF4C3C");
             wrong();
         }
         else{
             //If correct
+            if(!result)
             correct();
         }
         showAnswer();
@@ -22,17 +24,20 @@ function checkAnswer(id){
     
 }
 function wrong(){
+    result="wrong";
     song.pause();
     wrongsound.play();
     setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "false"}); }, 2000);
 }
 
 function correct(){ 
+    result="correct";
     song.pause();
     rightsound.play();
     setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "true"}); }, 2000);
 }
 function showAnswer(){
+    clearInterval(timer);
     $('#ans0').css("background-color", "#71E834");
     $('.ans').attr( "disabled", "true" );
 }
