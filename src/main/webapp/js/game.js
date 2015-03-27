@@ -1,12 +1,16 @@
 var countdown = 15;
-var bookofmormon_song = new Audio("sounds/TheGoldenPlates.mp3");
-    bookofmormon_song.play()
-    bookofmormon_song.loop = true;
+var songnames = ["TheGoldenPlates.mp3", "TheHandcartSong.mp3", "scrpowr.mp3"];
+var randomPick = Math.floor(Math.random() * songnames.length);
+var song = new Audio("sounds/"+ songnames[randomPick]);
+var wrongsound = new Audio("sounds/wrong.mp3");
+var rightsound = new Audio("sounds/Correct-answer.mp3");
+    song.play();
+    song.loop = true;
 function checkAnswer(id){
     if(!$('#ans'+id).attr("disabled")){
         if(id != 0){
             //If wrong
-            $('#ans'+id).css("background-color", "#FF4C3C")
+            $('#ans'+id).css("background-color", "#FF4C3C");
             wrong();
         }
         else{
@@ -18,10 +22,14 @@ function checkAnswer(id){
     
 }
 function wrong(){
+    song.pause();
+    wrongsound.play();
     setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "false"}); }, 2000);
 }
 
 function correct(){ 
+    song.pause();
+    rightsound.play();
     setTimeout(function(){ $.redirect('/ScriptureTrivia/GameStatus', {'correct': "true"}); }, 2000);
 }
 function showAnswer(){
