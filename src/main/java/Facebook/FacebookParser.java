@@ -45,6 +45,8 @@ public class FacebookParser extends HttpServlet {
         //Get the facebook seesion variable
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
         
+       
+        
         //get the facebook profile picture
         try {
             URL profilePic = facebook.getPictureURL();

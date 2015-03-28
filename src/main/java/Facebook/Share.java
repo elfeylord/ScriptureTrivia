@@ -41,7 +41,12 @@ public class Share extends HttpServlet {
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
         CurrentGame myGame = (CurrentGame)request.getSession().getAttribute("game");
         try {
-            facebook.postStatusMessage("I just smashed " + myGame.getFriendName() + " on Scripture Trivia! You should play too!!");
+         
+            facebook.postLink(new URL("http://scripturetricia-scripturetrivia.rhcloud.com"),
+                    "I just smashed " + myGame.getFriendName() + " on Scripture Trivia! You should play too!!");
+            //facebook.postLink(new URL("http://scripturetricia-scripturetrivia.rhcloud.com"),
+            //        "(test)I just smashed " + "@[" + friendId + ":1:" + friendName + "]" + " on Scripture Trivia! You should play too!!");
+           
         } catch (FacebookException ex) {
             Logger.getLogger(Share.class.getName()).log(Level.SEVERE, null, ex);
         }
