@@ -109,8 +109,12 @@ public class FacebookParser extends HttpServlet {
         
         //send the list to the main menu.
         //the ID is hard coded
+        //List<CurrentGame> yourGames = (List<CurrentGame>)myDB.getYourGameList(user);
+        //List<CurrentGame> theirGames = (List<CurrentGame>)myDB.getTheirGameList(user);
         List<CurrentGame> yourGames = (List<CurrentGame>)myDB.getYourGameList(1);
         List<CurrentGame> theirGames = (List<CurrentGame>)myDB.getTheirGameList(1);
+        
+        request.getSession().setAttribute("user", user);
         
         request.setAttribute("yourGames", yourGames);
         request.setAttribute("theirGames", theirGames);

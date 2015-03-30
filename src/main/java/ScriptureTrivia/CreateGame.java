@@ -7,8 +7,11 @@ package ScriptureTrivia;
 
 import Database.CurrentGame;
 import Database.DatabaseAccess;
+import Database.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,12 +37,17 @@ public class CreateGame extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        User tempUser = (User)request.getSession().getAttribute("user");
+        
+        
         String friendId = request.getParameter("id");
         String friendName = request.getParameter("name");
         
         DatabaseAccess myDB = new DatabaseAccess();
         
         //make it get from the database instead of make its own new one.
+        User user = new User(tempUser.getFacebookId(), tempUser.getName(), 0, true);
+        User friend = new User(friendId, friendName, 0, false);
         CurrentGame newGame = myDB.createNewGame("MY NAME", friendName, friendId);
         
         request.setAttribute("game", newGame);

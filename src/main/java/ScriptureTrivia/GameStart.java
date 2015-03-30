@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Cole
  */
 @WebServlet(name = "Game", urlPatterns = {"/Game"})
-public class Game extends HttpServlet {
+public class GameStart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,16 +35,19 @@ public class Game extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String category = request.getParameter("category");
+        
         //create a database access object
         DatabaseAccess database = new DatabaseAccess();
         //get a question from the database
+        //TriviaQuestion questionObj = (TriviaQuestion)database.getQuestion(gategory);
         TriviaQuestion questionObj = (TriviaQuestion)database.getQuestion();
         
         //send the question the the JSP
         List<String> answerString = questionObj.getAnswerList();
         String question = questionObj.getQuestion();
         
-        String category = request.getParameter("category");
+        
         request.setAttribute("category", category);
         request.setAttribute("answerList", answerString);
         request.setAttribute("question", question);
