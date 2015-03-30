@@ -40,9 +40,8 @@ public class GameStart extends HttpServlet {
         //create a database access object
         DatabaseAccess database = new DatabaseAccess();
         //get a question from the database
-        //TriviaQuestion questionObj = (TriviaQuestion)database.getQuestion(gategory);
-        TriviaQuestion questionObj = (TriviaQuestion)database.getQuestion();
-        
+        TriviaQuestion questionObj = (TriviaQuestion)database.getQuestion(category);
+               
         //send the question the the JSP
         List<String> answerString = questionObj.getAnswerList();
         String question = questionObj.getQuestion();

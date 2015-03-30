@@ -7,6 +7,7 @@ package ScriptureTrivia;
 
 import Database.CurrentGame;
 import Database.DatabaseAccess;
+import Database.Game;
 import Database.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,6 +49,7 @@ public class CreateGame extends HttpServlet {
         //make it get from the database instead of make its own new one.
         User user = new User(tempUser.getFacebookId(), tempUser.getName(), 0, true);
         User friend = new User(friendId, friendName, 0, false);
+        //Game newGame = myDB.createGame(user, friend);
         CurrentGame newGame = myDB.createNewGame("MY NAME", friendName, friendId);
         
         request.setAttribute("game", newGame);
