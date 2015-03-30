@@ -60,7 +60,7 @@ public class DatabaseAccess {
             }//end finally try
        System.out.println("Goodbye!");
    }
-    public TriviaQuestion getQuestion(){
+    public TriviaQuestion getQuestion(String category){
         String sql;
         ResultSet rs = null;
         String trivia_question = null;
@@ -73,7 +73,10 @@ public class DatabaseAccess {
         try{
             stmt = (Statement) conn.createStatement();
             
-            sql = "SELECT count(*) AS num_questions FROM question";
+            sql = "SELECT count(*) AS num_questions "
+                    + "FROM question AS q "
+                    + "JOIN category AS c on c.id = q.category_id "
+                    + "WHERE c.name = '" + category + "'";
             rs = stmt.executeQuery(sql);
             
             rs.next();
@@ -84,7 +87,11 @@ public class DatabaseAccess {
             int row = (int) (1 + Math.random() * (max ));
             System.out.print("row: " + row);
             
-            sql = "SELECT trivia_question, id FROM question ORDER BY id";
+            sql = "SELECT q.trivia_question, q.id "
+                    + "FROM question AS q"
+                    + "JOIN category AS c on c.id = q.category_id "
+                    + "WHERE c.name = '" + category + "' "
+                    + "ORDER BY q.id";
             rs = stmt.executeQuery(sql);
             
             //STEP 5: Extract data from result set
