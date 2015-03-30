@@ -88,7 +88,7 @@ public class DatabaseAccess {
             System.out.print("row: " + row);
             
             sql = "SELECT q.trivia_question, q.id "
-                    + "FROM question AS q"
+                    + "FROM question AS q "
                     + "JOIN category AS c on c.id = q.category_id "
                     + "WHERE c.name = '" + category + "' "
                     + "ORDER BY q.id";
