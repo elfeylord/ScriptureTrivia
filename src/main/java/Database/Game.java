@@ -14,6 +14,12 @@ public class Game {
     private User friend;
     private int gameId;
 
+    public Game(User user, User friend, int gameId){
+        this.user = user;
+        this.friend = friend;
+        this.gameId = gameId;
+    }
+    
     public User getUser() {
         return user;
     }
