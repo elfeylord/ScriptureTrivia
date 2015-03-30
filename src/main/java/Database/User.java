@@ -15,7 +15,7 @@ public class User {
     private int score;
     private boolean isTurn;
     
-    User(String facebookId, String name, int score, boolean isTurn)
+    public User(String facebookId, String name, int score, boolean isTurn)
     {
         this.facebookId = facebookId;
         this.name = name;

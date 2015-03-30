@@ -7,12 +7,14 @@ package Facebook;
 
 import Database.CurrentGame;
 import Database.DatabaseAccess;
+import Database.User;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
 import facebook4j.Friend;
 import facebook4j.ResponseList;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +47,8 @@ public class FacebookParser extends HttpServlet {
         //Get the facebook seesion variable
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
         
+        String userName = "";
+        String userId = "";
        
         
         //get the facebook profile picture
@@ -56,10 +60,21 @@ public class FacebookParser extends HttpServlet {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        try {   
+            userId = facebook.getId();
+            request.setAttribute("userid", userId);
+        
+        } catch (FacebookException ex) {
+            Logger.getLogger(FacebookParser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalStateException ex) {
+            Logger.getLogger(FacebookParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         //get the facebook user name
         try {
-            String name = facebook.getName();
-            request.setAttribute("username", name);
+            userName = facebook.getName();
+            request.setAttribute("username", userName);
         } 
         catch (FacebookException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,6 +104,8 @@ public class FacebookParser extends HttpServlet {
         }
                
         DatabaseAccess myDB = new DatabaseAccess();
+        
+        User user = new User(userId, userName, 0, true);
         
         //send the list to the main menu.
         //the ID is hard coded
