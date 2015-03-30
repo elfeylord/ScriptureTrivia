@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class DatabaseAccess {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    static final String DB_URL = "jdbc:mysql://127.4.137.2:3306/scripture_trivia";
+    static final String DB_URL = "jdbc:mysql://localhost/scripture_trivia";
     static final String USER = "trivia";
     static final String PASS = "trivia"; 
     private Connection conn = null;

@@ -98,14 +98,14 @@ body{
 }
 .marker-left{
     position:absolute;
-    top:150px;
+    top:50%;
     left:34%;
     z-index: 500;
     height:50px;
 }
 .marker-right{
     position:absolute;
-    top:150px;
+    top:50%;
     right:34%;
     z-index: 500;
     height:50px;
