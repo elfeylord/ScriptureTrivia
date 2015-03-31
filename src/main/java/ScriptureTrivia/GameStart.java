@@ -9,6 +9,8 @@ import Database.DatabaseAccess;
 import Database.TriviaQuestion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,10 +48,13 @@ public class GameStart extends HttpServlet {
         //send the question the the JSP
         List<String> answerString = questionObj.getAnswerList();
         String question = questionObj.getQuestion();
+        String answer = questionObj.getCorrectA();
         
         
         request.setAttribute("category", category);
+        Collections.shuffle(answerString);
         request.setAttribute("answerList", answerString);
+        request.setAttribute("answer", (answerString.indexOf(answer)+3)*5);
         request.setAttribute("question", question);
         
         request.getRequestDispatcher("Game.jsp").forward(request, response);
