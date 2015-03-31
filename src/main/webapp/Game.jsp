@@ -12,6 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Scripture Trivia | Game with friend</title>
         <jsp:include page="directives/linkedFiles.jsp" /> 
+        <script>
+            var check = ${answer};
+        </script>
     </head>
     <body>
         <jsp:include page="directives/header.jsp" />

@@ -23,5 +23,9 @@
         </div>
         <jsp:include page="directives/Script.jsp" />
         <script src="js/jquery.redirect.js"></script>
+        <script type="text/javascript">
+            var youwin = new Audio("sounds/win.wav");
+            youwin.play();
+        </script>
     </body>
 </html>

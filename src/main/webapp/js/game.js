@@ -9,7 +9,7 @@ var rightsound = new Audio("sounds/Correct-answer.mp3");
     song.loop = true;
 function checkAnswer(id){
     if(!$('#ans'+id).attr("disabled")){
-        if(id != 0 && !result){
+        if(id != (check/5)-3 && !result){
             //If wrong
             $('#ans'+id).css("background-color", "#FF4C3C");
             wrong();
@@ -38,7 +38,8 @@ function correct(){
 }
 function showAnswer(){
     clearInterval(timer);
-    $('#ans0').css("background-color", "#71E834");
+    var newCheck = (check/5)-3;
+    $('#ans'+newCheck).css("background-color", "#71E834");
     $('.ans').attr( "disabled", "true" );
 }
 

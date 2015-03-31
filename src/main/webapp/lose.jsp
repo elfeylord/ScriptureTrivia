@@ -23,5 +23,9 @@
         </div>
         <jsp:include page="directives/Script.jsp" />
         <script src="js/jquery.redirect.js"></script>
+        <script type="text/javascript">
+            var youlose = new Audio("sounds/waaah.wav");
+            youlose.play();
+        </script>
     </body>
 </html>
