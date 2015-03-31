@@ -5,13 +5,13 @@
  */
 package Database;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Statement;
+import java.sql.Connection;
 
 /**
  *
@@ -24,7 +24,7 @@ public class DatabaseAccess {
     static final String PASS = "trivia"; 
     private Connection conn = null;
     private Statement stmt = null;  
-   public DatabaseAccess()
+    public DatabaseAccess()
     {
 
         
@@ -34,7 +34,7 @@ public class DatabaseAccess {
 
             //Open a connection
             System.out.println("Connecting to database...");
-            conn = (Connection) DriverManager.getConnection(DB_URL,USER,PASS);
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
          }catch(SQLException se){
             //Handle errors for JDBC
@@ -60,6 +60,7 @@ public class DatabaseAccess {
             }//end finally try
        System.out.println("Goodbye!");
    }
+   
     public TriviaQuestion getQuestion(String category){
         String sql;
         ResultSet rs = null;
@@ -71,7 +72,7 @@ public class DatabaseAccess {
         
         //STEP 4: Execute a query
         try{
-            stmt = (Statement) conn.createStatement();
+            stmt = conn.createStatement();
             
             sql = "SELECT count(*) AS num_questions "
                     + "FROM question AS q "
@@ -119,24 +120,174 @@ public class DatabaseAccess {
             rs.next();
             iAnswer3 = rs.getString("text");
             
+            //test section
+//            User user = new User("wutev", "whateve", 123, true);
+//            User user2 = new User("number2", "number2.buhaha", 321, false);
+//            createGame(user, user2);
+//            
+//            
+//            List<Game> games = getGames(user);
+//            games.get(2).getUser().setScore(45);
+//            games.get(2).getFriend().setScore(57);
+//            games.get(2).getUser().setIsTurn(false);
+//            games.get(2).getFriend().setIsTurn(true);
+//            saveGame(games.get(2));
             
         }catch(Exception e){
             //Handle errors for Class.forName
             e.printStackTrace();
-         }
+        }
                  
         TriviaQuestion sendQuestion = new TriviaQuestion(trivia_question, cAnswer, iAnswer1, iAnswer2, iAnswer3);
         return sendQuestion;
     }
     
     public void removeGame(int gameId){
+        //STEP 4: Execute a query
+        String sql;
+        ResultSet rs = null;
         
+        try{
+            stmt = conn.createStatement();
+            
+            sql = "Delete FROM game_user "
+                    + "WHERE game_id = " + gameId;
+            stmt.executeQuery(sql);   
+            
+            sql = "Delete FROM game "
+                    + "WHERE id = " + gameId;
+            stmt.executeQuery(sql);   
+            
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }
     }
     
     public CurrentGame getGame(int gameId){
         //get from DB
         CurrentGame game = new CurrentGame(true, 2, "FRIEND NAME", "", 21, 21);
         return game;
+    }
+    
+    public List<Game> getGames(User user){
+        List<Game> gameList = new ArrayList<>();
+        String sql = null;
+        //ResultSet rs = null;
+        
+        try{
+            stmt = conn.createStatement();
+            
+            sql = "SELECT g.id FROM game AS g "
+                    + "JOIN game_user AS gu ON gu.game_id = g.id "
+                    + "JOIN user AS u ON u.id = gu.user_id "
+                    + "WHERE u.facebook_id = '" + user.getFacebookId() + "' "
+                    + "ORDER BY g.id";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next())
+            {
+                Statement stm = conn.createStatement();
+                ResultSet r = null;
+                Game game = null;
+                User opponent = null ; 
+                sql = "SELECT u.facebook_id, u.name, gu.score, gu.isTurn FROM user AS u "
+                        + "JOIN game_user AS gu ON gu.user_id = u.id "
+                        + "JOIN game AS g ON g.id = gu.game_id "
+                        + "WHERE g.id = " + rs.getInt("g.id") + " AND u.facebook_id != '" + user.getFacebookId() + "'";
+         
+                r = stm.executeQuery(sql);
+                
+                r.next();
+                        
+                opponent = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), r.getBoolean("gu.isTurn"));
+                game = new Game(user, opponent, rs.getInt("g.id"));
+                gameList.add(game);
+            }
+            
+            
+            
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+         }
+        
+        return gameList;
+    }
+    
+    public Game createGame(User user, User opponent){
+        checkUser(user);
+        checkUser(opponent);
+        Game game = null;
+        int autoId;
+        
+        try{
+            String sql = "INSERT INTO game () VALUES ()";
+            stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            autoId = rs.getInt(1);
+            
+            sql = "INSERT INTO game_user(user_id, game_id, score, isTurn) "
+                    + "VALUES((SELECT id FROM user WHERE facebook_id = '" + user.getFacebookId() + "'), "
+                    + "'" + autoId + "', 0, true)";
+            
+            stmt.executeUpdate(sql);
+            
+            sql = "INSERT INTO game_user(user_id, game_id, score, isTurn) "
+                    + "VALUES((SELECT id FROM user WHERE facebook_id = '" + opponent.getFacebookId() + "'),"
+                    + "'" + autoId + "', 0, false)";
+            
+            stmt.executeUpdate(sql);
+            
+            game = new Game(user, opponent, autoId);
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }        
+        return game;
+    }
+    
+    public void checkUser(User user){
+        String sql;
+        ResultSet rs = null;
+        
+        try{
+            stmt = conn.createStatement();
+            
+            sql = "SELECT COUNT(*) as rowcount FROM user "
+                    + "WHERE facebook_id = '" + user.getFacebookId() +"'";
+          
+            rs = stmt.executeQuery(sql);   
+            
+            rs.next();
+                
+            int count = rs.getInt("rowcount");
+            
+            if(count == 0)
+                addNewUser(user);
+            
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        } 
+    }
+    
+    public void addNewUser(User user){
+        String sql;
+        
+        try{
+            stmt = conn.createStatement();
+            
+            sql = "INSERT INTO user (facebook_id, name) "
+                    + "VALUES('" + user.getFacebookId() + "', '" + user.getName() + "')";
+            stmt.executeUpdate(sql);      
+            
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+         }
     }
     
     public CurrentGame createNewGame(String yourName, String friendName, String friendId){
@@ -174,4 +325,32 @@ public class DatabaseAccess {
     public void addUser(String name){
         
     }
+    
+    public void saveGame(Game game){
+        
+        try{
+            String sql = null;
+            sql = "UPDATE user AS u "
+                    + "JOIN game_user AS gu ON gu.user_id = u.id "
+                    + "JOIN game AS g ON g.id = gu.game_id "
+                    + "SET gu.score = " + game.getUser().getScore() + ", "
+                    + "isTurn = " + game.getUser().getIsTurn() + " "
+                    + "where g.id = " + game.getGameId() + " AND u.facebook_id = '" + game.getUser().getFacebookId() + "'";
+            
+            stmt.executeUpdate(sql);
+            
+            sql = "UPDATE user AS u "
+                    + "JOIN game_user AS gu ON gu.user_id = u.id "
+                    + "JOIN game AS g ON g.id = gu.game_id "
+                    + "SET gu.score = " + game.getFriend().getScore() + ", "
+                    + "isTurn = " + game.getFriend().getIsTurn() + " "
+                    + "where g.id = " + game.getGameId() + " AND u.facebook_id = '" + game.getFriend().getFacebookId() + "'";
+            
+            stmt.executeUpdate(sql);
+            
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }        
+    } 
 }
