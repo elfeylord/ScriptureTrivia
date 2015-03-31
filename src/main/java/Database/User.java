@@ -47,7 +47,7 @@ public class User {
         this.score = score;
     }
 
-    public boolean isIsTurn() {
+    public boolean getIsTurn() {
         return isTurn;
     }
 
