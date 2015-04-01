@@ -120,16 +120,16 @@ public class FacebookParser extends HttpServlet {
         for (Game game : games)
         {
             System.out.println(game.getUser().getIsTurn());
-            if (game.getUser().getIsTurn() == true)
+            //if (game.getUser().getIsTurn() == true)
             {
                 yourGames.add(game);
                 System.out.println("we should see something!");
             }
-            else
-            {
-                theirGames.add(game);
-                System.out.println("WHAT IS GOING ON!?");
-            }
+            //else
+            //{
+            //    theirGames.add(game);
+            //    System.out.println("WHAT IS GOING ON!?");
+            //}
         }
         
         request.getSession().setAttribute("user", user);
