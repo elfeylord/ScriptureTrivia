@@ -1,4 +1,4 @@
-function confirmStart(name, id, game){
+function confirmStart(name, id){
     bootbox.dialog({
       message: "Begin game with " + name + "?",
       title: "Friend Challenge",

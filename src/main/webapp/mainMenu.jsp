@@ -28,13 +28,13 @@
             <div>
                 <h2>Your turn:</h2>
                 <c:forEach items="${yourGames}" var="yourGame">
-                    <a href="#" onclick="confirmCont('${yourGame.friend.name}','${yourGame.gameId}', ${yourGame})" class="list-group-item"><img class="img-rounded profile" src="https://graph.facebook.com/${yourGame.friend.facebookId}/picture"/>${yourGame.friend.name}<span class="pull-right">${yourGame.user.score}-${yourGame.friend.score}</span></a>
+                    <a href="#" onclick="confirmCont('${yourGame.friend.name}','${yourGame.gameId}')" class="list-group-item"><img class="img-rounded profile" src="https://graph.facebook.com/${yourGame.friend.facebookId}/picture"/> ${yourGame.friend.name}<span class="pull-right">${yourGame.user.score}-${yourGame.friend.score}</span></a>
                 </c:forEach>
             </div>
             <div>
                 <h2>Their turn:</h2>
                 <c:forEach items="${theirGames}" var="theirGame">
-                    <a class="list-group-item disabled"><img class="img-rounded profile" src="https://graph.facebook.com/${theirGame.friend.facebookId}/picture"/>${theirGame.friend.name}<span class="pull-right">${theirGame.user.score()}-${theirGame.friend.score}</span></a>
+                    <a class="list-group-item disabled"><img class="img-rounded profile" src="https://graph.facebook.com/${theirGame.friend.facebookId}/picture"/> ${theirGame.friend.name}<span class="pull-right">${theirGame.user.score()}-${theirGame.friend.score}</span></a>
                 </c:forEach>
             </div>
         </div>

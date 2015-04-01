@@ -111,6 +111,6 @@ body{
     height:50px;
 }
 .list-group-item{
-    padding-left: 10px;
+    vertical-align: middle;
     font-size: 16px;
 }
