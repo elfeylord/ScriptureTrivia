@@ -164,12 +164,6 @@ public class DatabaseAccess {
         }
     }
     
-    public CurrentGame getGame(int gameId){
-        //get from DB
-        CurrentGame game = new CurrentGame(true, 2, "FRIEND NAME", "", 21, 21);
-        return game;
-    }
-    
     public List<Game> getGames(User user){
         List<Game> gameList = new ArrayList<>();
         String sql = null;
@@ -240,7 +234,78 @@ public class DatabaseAccess {
         
         return gameList;
     }
-    
+    /*
+    public Game getGame(int id) {
+        List<Game> gameList = new ArrayList<>();
+        String sql = null;
+        //ResultSet rs = null;
+        
+        try{
+            stmt = conn.createStatement();
+            
+            sql = "SELECT g.id FROM game AS g "
+                    + "JOIN game_user AS gu ON gu.game_id = g.id "
+                    + "JOIN user AS u ON u.id = gu.user_id "
+                    + "WHERE g.id = " + id + " "
+                    + "ORDER BY g.id";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            rs.next();
+            
+            Statement stm = conn.createStatement();
+            ResultSet r = null;
+            Game game = null;
+            User opponent = null ; 
+            sql = "SELECT u.facebook_id, u.name, gu.score, gu.isTurn FROM user AS u "
+                        + "JOIN game_user AS gu ON gu.user_id = u.id "
+                        + "JOIN game AS g ON g.id = gu.game_id "
+                        + "WHERE g.id = " + rs.getInt("g.id") + " AND u.facebook_id != '" + user.getFacebookId() + "'";
+         
+            r = stm.executeQuery(sql);
+                
+            r.next();
+            //System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
+            boolean isTurn = false;
+                
+            if(r.getInt("gu.isTurn") == 0)
+                isTurn = false;
+            else
+                isTurn = true;
+                
+                opponent = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), isTurn);
+
+                sql = "SELECT u.facebook_id, u.name, gu.score, gu.isTurn FROM user AS u "
+                        + "JOIN game_user AS gu ON gu.user_id = u.id "
+                        + "JOIN game AS g ON g.id = gu.game_id "
+                        + "WHERE g.id = " + rs.getInt("g.id") + " AND u.facebook_id = '" + user.getFacebookId() + "'";
+         
+                r = stm.executeQuery(sql);
+                
+                r.next();
+                //System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
+                isTurn = false;
+                
+                if(r.getInt("gu.isTurn") == 0)
+                    isTurn = false;
+                else
+                    isTurn = true;
+                
+                //hopefully this doesnt cause an interesting bug.
+                User userGame = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), isTurn);
+                game = new Game(userGame, opponent, rs.getInt("g.id"));
+                gameList.add(game);
+            }
+            
+            
+            
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+         }
+        
+        return gameList;
+    }
+       */ 
     public Game createGame(User user, User opponent){
         checkUser(user);
         checkUser(opponent);

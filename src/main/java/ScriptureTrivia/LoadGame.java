@@ -44,6 +44,7 @@ public class LoadGame extends HttpServlet {
         
         DatabaseAccess myDB = new DatabaseAccess();
                 
+        
         CurrentGame myGame = myDB.getGame(parseInt(gameId));
         
         
