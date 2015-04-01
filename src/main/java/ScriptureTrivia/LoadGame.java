@@ -41,14 +41,14 @@ public class LoadGame extends HttpServlet {
             throws ServletException, IOException {
         
         String gameId = request.getParameter("gameId");
-        
+        String userId = request.getParameter("facebookId");
         DatabaseAccess myDB = new DatabaseAccess();
                 
         
-        CurrentGame myGame = myDB.getGame(parseInt(gameId));
+        Game myGame = myDB.getGame(parseInt(gameId), parseInt(userId));
         
         
-        if (myGame.getFriendScore()/*.getFriend().getScore()*/ >= 21)
+        if (myGame.getFriend().getScore() >= 21)
         {
             myDB.removeGame(myGame.getGameId());
             request.getRequestDispatcher("lose.jsp").forward(request, response);
