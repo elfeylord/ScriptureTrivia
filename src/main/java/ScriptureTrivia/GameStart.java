@@ -36,6 +36,7 @@ public class GameStart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("testing GameStart");
         
         String category = request.getParameter("category");
         

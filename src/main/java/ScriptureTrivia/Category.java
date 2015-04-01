@@ -31,6 +31,7 @@ public class Category extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("int the category servlet");
         request.getSession().setAttribute("game", request.getAttribute("game"));
         request.getRequestDispatcher("category.jsp").forward(request, response);
     }
