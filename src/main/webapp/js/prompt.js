@@ -1,4 +1,4 @@
-function confirmStart(name, id){
+function confirmStart(name, id, game){
     bootbox.dialog({
       message: "Begin game with " + name + "?",
       title: "Friend Challenge",
@@ -7,7 +7,7 @@ function confirmStart(name, id){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            $.redirect("CreateGame", {'id': id, 'name': name});
+            $.redirect("CreateGame", {'game': game});
           }
         },
         danger: {
