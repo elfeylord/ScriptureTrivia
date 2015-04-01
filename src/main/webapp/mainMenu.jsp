@@ -16,7 +16,7 @@
     <body>
         <jsp:include page="directives/header.jsp" /> 
         <div class="container img-rounded">
-            <h1>Welcome ${username}!</h1>
+            <h1>Welcome, ${username}!</h1>
             <div>
                 <h2>Your friends that play</h2>
                 <div class="list-group">
@@ -28,13 +28,13 @@
             <div>
                 <h2>Your turn:</h2>
                 <c:forEach items="${yourGames}" var="yourGame">
-                    <a href="#" onclick="confirmCont('${yourGame.friendName}','${yourGame.gameId}')" class="list-group-item">${yourGame.friendName}<span class="pull-right">${yourGame.getYourScore()}-${yourGame.friendScore}</span></a>
+                    <a href="#" onclick="confirmCont('${yourGame.friend.name}','${yourGame.gameId}')" class="list-group-item">${yourGame.friend.name}<span class="pull-right">${yourGame.user.score}-${yourGame.friend.score}</span></a>
                 </c:forEach>
             </div>
             <div>
                 <h2>Their turn:</h2>
                 <c:forEach items="${theirGames}" var="theirGame">
-                    <a class="list-group-item disabled">${theirGame.friendName}<span class="pull-right">${theirGame.getYourScore()}-${theirGame.friendScore}</span></a>
+                    <a class="list-group-item disabled">${theirGame.friend.name}<span class="pull-right">${theirGame.user.score()}-${theirGame.friend.score}</span></a>
                 </c:forEach>
             </div>
         </div>
