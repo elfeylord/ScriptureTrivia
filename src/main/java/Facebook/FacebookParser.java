@@ -7,6 +7,7 @@ package Facebook;
 
 import Database.CurrentGame;
 import Database.DatabaseAccess;
+import Database.Game;
 import Database.User;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
@@ -107,12 +108,26 @@ public class FacebookParser extends HttpServlet {
         
         User user = new User(userId, userName, 0, true);
         
+        myDB.checkUser(user);
+
         //send the list to the main menu.
         //the ID is hard coded
-        //List<CurrentGame> yourGames = (List<CurrentGame>)myDB.getYourGameList(user);
-        //List<CurrentGame> theirGames = (List<CurrentGame>)myDB.getTheirGameList(user);
-        List<CurrentGame> yourGames = (List<CurrentGame>)myDB.getYourGameList(1);
-        List<CurrentGame> theirGames = (List<CurrentGame>)myDB.getTheirGameList(1);
+        List<Game> games = myDB.getGames(user);        
+        
+        List<Game> yourGames = new ArrayList();
+        List<Game> theirGames = new ArrayList();
+        
+        for (Game game : games)
+        {
+            if (game.getUser().getIsTurn())
+            {
+                yourGames.add(game);
+            }
+            else
+            {
+                theirGames.add(game);
+            }
+        }
         
         request.getSession().setAttribute("user", user);
         

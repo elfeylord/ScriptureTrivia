@@ -295,37 +295,14 @@ public class DatabaseAccess {
         CurrentGame game = new CurrentGame(true, 0, friendName, friendId, 20, 20);
         return game;
     }
-    
-    public List<CurrentGame> getYourGameList(int userId){
         
-        List<CurrentGame> listReturn = new ArrayList();
-        CurrentGame game = new CurrentGame(true, 1, "FRIEND NAME", "", 14, 12);
-        listReturn.add(game);
-        game = new CurrentGame(true, 2, "COLE", "", 2, 4);
-        listReturn.add(game);
-        return listReturn;
-    }
-    
-    public List<CurrentGame> getTheirGameList(int userId){
-        CurrentGame game = new CurrentGame(false, 3, "Justin", "", 4, 7);
-        List<CurrentGame> listReturn = new ArrayList();
-        listReturn.add(game);
-        game = new CurrentGame(false, 4, "Cordon", "", 4, 1);
-        listReturn.add(game);
-        return listReturn;
-    }
-    
     public List<CurrentGame> getGameList(int userId){
         CurrentGame game = new CurrentGame(true, 1, "FRIEND NAME", "", 14, 12);
         List<CurrentGame> listReturn = new ArrayList();
         listReturn.add(game);
         return listReturn;
     }
-    
-    public void addUser(String name){
         
-    }
-    
     public void saveGame(Game game){
         
         try{
