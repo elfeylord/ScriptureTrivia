@@ -18,11 +18,11 @@
     </head>
     <body>
         <jsp:include page="directives/header.jsp" />
-        <img class="img-rounded pl1" src="${profilePic}"/><h1 class="verses">Vs.</h1><img class="img-rounded pl2" src="https://graph.facebook.com/${game.friendId}/picture"/>
+        <img class="img-rounded pl1" src="${profilePic}"/><h1 class="verses">Vs.</h1><img class="img-rounded pl2" src="https://graph.facebook.com/${game.friend.facebookId}/picture"/>
         <div id="countdown" class="pull-right timer">15</div>
         
         <div class="container img-rounded">
-            <h3 class="pull-right">${game.yourScore}</h3>
+            <h3 class="pull-right">${game.user.score}</h3>
             <h1>Category: ${category}</h1>
             <h2>${question}</h2>
             <div class="list-group">
