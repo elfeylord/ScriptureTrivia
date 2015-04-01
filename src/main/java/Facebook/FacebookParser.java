@@ -129,6 +129,7 @@ public class FacebookParser extends HttpServlet {
  
             }
         }
+        
         request.getSession().setAttribute("user", user);
         
         request.setAttribute("yourGames", yourGames);

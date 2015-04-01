@@ -28,7 +28,7 @@
             <div>
                 <h2>Your turn:</h2>
                 <c:forEach items="${yourGames}" var="yourGame">
-                    <a href="#" onclick="confirmCont('${yourGame.user.name}','${yourGame.gameId}', '${yourGame.user.facebookId}')" class="list-group-item"><img class="img-rounded profile" src="https://graph.facebook.com/${yourGame.friend.facebookId}/picture"/> ${yourGame.friend.name}<span class="pull-right">${yourGame.user.score}-${yourGame.friend.score}</span></a>
+                    <a href="#" onclick="confirmCont('${yourGame.friend.name}','${yourGame.gameId}', '${yourGame.user.facebookId}')" class="list-group-item"><img class="img-rounded profile" src="https://graph.facebook.com/${yourGame.friend.facebookId}/picture"/> ${yourGame.friend.name}<span class="pull-right">${yourGame.user.score}-${yourGame.friend.score}</span></a>
                 </c:forEach>
             </div>
             <div>

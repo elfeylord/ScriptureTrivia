@@ -5,6 +5,7 @@
  */
 package Database;
 
+import static java.lang.Integer.parseInt;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -237,7 +238,7 @@ public class DatabaseAccess {
     
     /**************************** COLE ********************************/
     //hey I did this all for you already.
-    public Game getGame(int gameId, int userId) {
+    public Game getGame(String gameId, User user) {
         String sql = null;
         //ResultSet rs = null;
         Game game = null;
@@ -254,19 +255,20 @@ public class DatabaseAccess {
             ResultSet rs = stmt.executeQuery(sql);
             */
             //rs.next();
-            
+            System.out.println("1");
             Statement stm = conn.createStatement();
             ResultSet r = null;
             User opponent = null ; 
             sql = "SELECT u.facebook_id, u.name, gu.score, gu.isTurn FROM user AS u "
                         + "JOIN game_user AS gu ON gu.user_id = u.id "
                         + "JOIN game AS g ON g.id = gu.game_id "
-                        + "WHERE g.id = " + gameId + " AND u.facebook_id != " + userId;
+                        + "WHERE g.id = " + gameId + " AND u.facebook_id != '" + user.getFacebookId() + "'";
          
             r = stm.executeQuery(sql);
                 
             r.next();
-            //System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
+            System.out.println("2");
+            System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
             boolean isTurn = false;
                 
             if(r.getInt("gu.isTurn") == 0)
@@ -276,27 +278,45 @@ public class DatabaseAccess {
                 
             opponent = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), isTurn);
 
+            stmt = conn.createStatement();
+            
+            System.out.println("3");
             sql = "SELECT u.facebook_id, u.name, gu.score, gu.isTurn FROM user AS u "
-                    + "JOIN game_user AS gu ON gu.user_id = u.id "
-                    + "JOIN game AS g ON g.id = gu.game_id "
-                    + "WHERE g.id = " + gameId + " AND u.facebook_id = " +  userId;
+                        + "JOIN game_user AS gu ON gu.user_id = u.id "
+                        + "JOIN game AS g ON g.id = gu.game_id "
+                        + "WHERE g.id = " + gameId + " AND u.facebook_id = '" + user.getFacebookId() + "'";
+            
+            System.out.println(sql);
+            
+            ResultSet rs = stmt.executeQuery(sql);
 
-            r = stm.executeQuery(sql);
-
-            r.next();
-            //System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
-            isTurn = false;
-
-            if(r.getInt("gu.isTurn") == 0)
+            rs.next();
+            System.out.println("check this value:" + rs.getBoolean("gu.isTurn"));
+            //isTurn = false;
+            /*ystem.out.println("4");
+            /if(r.getInt("gu.isTurn") == 0)
                 isTurn = false;
             else
                 isTurn = true;
-
+            */
+            if (isTurn == true)
+            {
+                isTurn = false;
+            }
+            else
+            {
+                isTurn = true;
+            }
+            
+            
+            System.out.println("5");
             //hopefully this doesnt cause an interesting bug.
-            User userGame = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), isTurn);
-            game = new Game(userGame, opponent, gameId);
+            User userGame = new User(rs.getString("u.facebook_id"), rs.getString("u.name"), rs.getInt("gu.score"), isTurn);
+            //User userGame = new User("lifes", "LIES", 10, isTurn);
+            System.out.println("6");
+            game = new Game(userGame, opponent, parseInt(gameId));
             
-            
+            System.out.println("Integer is: " + parseInt(gameId));
             
             
         }catch(Exception e){

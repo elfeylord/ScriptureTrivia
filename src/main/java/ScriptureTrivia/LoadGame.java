@@ -41,12 +41,26 @@ public class LoadGame extends HttpServlet {
             throws ServletException, IOException {
         
         String gameId = request.getParameter("gameId");
-        String userId = request.getParameter("facebookId");
+        //String userId = request.getParameter("facebookId");
         DatabaseAccess myDB = new DatabaseAccess();
-                
         
-        Game myGame = myDB.getGame(parseInt(gameId), parseInt(userId));
+        User myUser = (User)request.getSession().getAttribute("user");
         
+        //System.out.println("before getting the game facebookId is: " + userId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        System.out.println("before getting the game gameId is: " + gameId);
+        
+        Game myGame = myDB.getGame(gameId, myUser);
+        
+        System.out.println("after getting the game");
         
         if (myGame.getFriend().getScore() >= 21)
         {

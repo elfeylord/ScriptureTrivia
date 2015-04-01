@@ -28,7 +28,7 @@ function confirmCont(name, gameId, fbId){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            $.redirect("LoadGame", {'gameId': gameId, 'facebookId':fbId});
+            $.redirect("LoadGame", {'gameId': gameId, 'facebookId': fbId});
           }
         },
         danger: {
