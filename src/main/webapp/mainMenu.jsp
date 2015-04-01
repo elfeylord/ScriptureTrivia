@@ -34,7 +34,7 @@
             <div>
                 <h2>Their turn:</h2>
                 <c:forEach items="${theirGames}" var="theirGame">
-                    <a class="list-group-item disabled"><img class="img-rounded profile" src="https://graph.facebook.com/${theirGame.friend.facebookId}/picture"/> ${theirGame.friend.name}<span class="pull-right">${theirGame.user.score()}-${theirGame.friend.score}</span></a>
+                    <a class="list-group-item disabled"><img class="img-rounded profile" src="https://graph.facebook.com/${theirGame.friend.facebookId}/picture"/> ${theirGame.friend.name}<span class="pull-right">${theirGame.user.score}-${theirGame.friend.score}</span></a>
                 </c:forEach>
             </div>
         </div>
