@@ -42,7 +42,7 @@ public class GameStart extends HttpServlet {
         //create a database access object
         DatabaseAccess database = new DatabaseAccess();
         //get a question from the database
-        /************************************ CHNGE!!!!!! *********************************/
+        /************************************ CHANGE!!!!!! *********************************/
         /**********************************************************************************/
         /**********************************************************************************/
         //TriviaQuestion questionObj = (TriviaQuestion)database.getQuestion(category);
