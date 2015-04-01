@@ -300,6 +300,7 @@ public class DatabaseAccess {
     public void saveGame(Game game){
         
         try{
+            stmt = conn.createStatement();
             String sql = null;
             sql = "UPDATE user AS u "
                     + "JOIN game_user AS gu ON gu.user_id = u.id "

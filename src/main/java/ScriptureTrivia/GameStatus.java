@@ -42,6 +42,7 @@ public class GameStatus extends HttpServlet {
         Game game = (Game)request.getSession().getAttribute("game");
         if ("true".equals(correct)){ 
             game.getUser().setScore(/*game.getUser().getScore() + 1*/ 40);
+            game.setGameId(1);
             if (game.getUser().getScore() >= 21)
             {
                 game.getUser().setIsTurn(false);

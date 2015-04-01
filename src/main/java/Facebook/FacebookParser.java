@@ -122,10 +122,12 @@ public class FacebookParser extends HttpServlet {
             if (game.getUser().getIsTurn())
             {
                 yourGames.add(game);
+                System.out.println("we should see something!");
             }
             else
             {
                 theirGames.add(game);
+                System.out.println("WHAT IS GOING ON!?");
             }
         }
         
