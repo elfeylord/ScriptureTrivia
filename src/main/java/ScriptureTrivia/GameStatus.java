@@ -41,7 +41,7 @@ public class GameStatus extends HttpServlet {
         DatabaseAccess myDB = new DatabaseAccess();               
         Game game = (Game)request.getSession().getAttribute("game");
         if ("true".equals(correct)){ 
-            game.getUser().setScore(/*game.getUser().getScore() + 1*/ 40);
+            game.getUser().setScore(game.getUser().getScore() + 1);
             game.setGameId(1);
             if (game.getUser().getScore() >= 21)
             {

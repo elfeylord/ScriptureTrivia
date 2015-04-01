@@ -7,9 +7,14 @@ package ScriptureTrivia;
 
 import Database.CurrentGame;
 import Database.DatabaseAccess;
+import Database.Game;
+import Database.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,8 +43,11 @@ public class LoadGame extends HttpServlet {
         String gameId = request.getParameter("gameId");
         
         DatabaseAccess myDB = new DatabaseAccess();
-        CurrentGame myGame = myDB.getGame(Integer.parseInt(gameId));
-        if (myGame.getFriendScore() >= 21)
+                
+        Game myGame = myDB.getGame(parseInt(gameId));
+        
+        
+        if (myGame.getFriend().getScore() >= 21)
         {
             myDB.removeGame(myGame.getGameId());
             request.getRequestDispatcher("lose.jsp").forward(request, response);
