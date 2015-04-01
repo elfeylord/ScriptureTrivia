@@ -49,8 +49,8 @@ public class CreateGame extends HttpServlet {
         //make it get from the database instead of make its own new one.
         User user = new User(tempUser.getFacebookId(), tempUser.getName(), 0, true);
         User friend = new User(friendId, friendName, 0, false);
-        //Game newGame = myDB.createGame(user, friend);
-        CurrentGame newGame = myDB.createNewGame("MY NAME", friendName, friendId);
+ 
+        Game newGame = myDB.createGame(user, friend);
         
         request.setAttribute("game", newGame);
         

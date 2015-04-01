@@ -289,13 +289,7 @@ public class DatabaseAccess {
             e.printStackTrace();
          }
     }
-    
-    public CurrentGame createNewGame(String yourName, String friendName, String friendId){
-    
-        CurrentGame game = new CurrentGame(true, 0, friendName, friendId, 20, 20);
-        return game;
-    }
-        
+            
     public List<CurrentGame> getGameList(int userId){
         CurrentGame game = new CurrentGame(true, 1, "FRIEND NAME", "", 14, 12);
         List<CurrentGame> listReturn = new ArrayList();
