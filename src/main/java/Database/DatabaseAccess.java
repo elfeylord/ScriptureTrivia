@@ -199,9 +199,35 @@ public class DatabaseAccess {
                 r = stm.executeQuery(sql);
                 
                 r.next();
-                        
-                opponent = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), r.getBoolean("gu.isTurn"));
-                game = new Game(user, opponent, rs.getInt("g.id"));
+                //System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
+                boolean isTurn = false;
+                
+                if(r.getInt("gu.isTurn") == 0)
+                    isTurn = false;
+                else
+                    isTurn = true;
+                
+                opponent = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), isTurn);
+
+                sql = "SELECT u.facebook_id, u.name, gu.score, gu.isTurn FROM user AS u "
+                        + "JOIN game_user AS gu ON gu.user_id = u.id "
+                        + "JOIN game AS g ON g.id = gu.game_id "
+                        + "WHERE g.id = " + rs.getInt("g.id") + " AND u.facebook_id = '" + user.getFacebookId() + "'";
+         
+                r = stm.executeQuery(sql);
+                
+                r.next();
+                //System.out.println("check this value:" + r.getBoolean("gu.isTurn"));
+                isTurn = false;
+                
+                if(r.getInt("gu.isTurn") == 0)
+                    isTurn = false;
+                else
+                    isTurn = true;
+                
+                //hopefully this doesnt cause an interesting bug.
+                User userGame = new User(r.getString("u.facebook_id"), r.getString("u.name"), r.getInt("gu.score"), isTurn);
+                game = new Game(userGame, opponent, rs.getInt("g.id"));
                 gameList.add(game);
             }
             
