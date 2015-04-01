@@ -7,7 +7,7 @@ function confirmStart(name, id, game){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            $.redirect("CreateGame", {'game': game});
+            $.redirect("CreateGame", {'id': id, 'name': name});
           }
         },
         danger: {
