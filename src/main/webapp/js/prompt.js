@@ -19,7 +19,7 @@ function confirmStart(name, id){
       }
     });
 }
-function confirmCont(name, gameId){
+function confirmCont(name, gameId, fbId){
     bootbox.dialog({
       message: "Continue game with " + name + "?",
       title: "Friend Challenge",
@@ -28,7 +28,7 @@ function confirmCont(name, gameId){
           label: "Yes",
           className: "btn-success",
           callback: function() {
-            $.redirect("LoadGame", {'gameId': gameId});
+            $.redirect("LoadGame", {'gameId': gameId, 'friendFacebookId':fbId});
           }
         },
         danger: {
