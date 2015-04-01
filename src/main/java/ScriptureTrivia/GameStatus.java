@@ -6,6 +6,8 @@
 package ScriptureTrivia;
 
 import Database.CurrentGame;
+import Database.DatabaseAccess;
+import Database.Game;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashSet;
@@ -36,25 +38,33 @@ public class GameStatus extends HttpServlet {
             throws ServletException, IOException {
         String correct = request.getParameter("correct");
         
-                       
-        
-        if ("true".equals(correct)){
-            CurrentGame game = (CurrentGame)request.getSession().getAttribute("game");
-            game.setYourScore(game.getYourScore() + 1);
-            if (game.getYourScore() >= 21)
+        DatabaseAccess myDB = new DatabaseAccess();               
+        Game game = (Game)request.getSession().getAttribute("game");
+        if ("true".equals(correct)){ 
+            game.getUser().setScore(/*game.getUser().getScore() + 1*/ 40);
+            if (game.getUser().getScore() >= 21)
             {
-                game.setYourTurn(false);
+                game.getUser().setIsTurn(false);
+                game.getFriend().setIsTurn(true);
+                
+                myDB.saveGame(game);
+                
                 response.sendRedirect("win.jsp");
                 
             }
             else
             {
+                myDB.saveGame(game);
                 request.setAttribute("game", game);
                 request.getRequestDispatcher("Category").forward(request, response);
             }
         }
         else
         {
+            game.getUser().setIsTurn(false);
+            game.getFriend().setIsTurn(true);
+            myDB.saveGame(game);
+            
             response.sendRedirect("FacebookParser");
         }
     }
