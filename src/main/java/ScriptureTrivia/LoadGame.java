@@ -44,10 +44,10 @@ public class LoadGame extends HttpServlet {
         
         DatabaseAccess myDB = new DatabaseAccess();
                 
-        Game myGame = myDB.getGame(parseInt(gameId));
+        CurrentGame myGame = myDB.getGame(parseInt(gameId));
         
         
-        if (myGame.getFriend().getScore() >= 21)
+        if (myGame.getFriendScore()/*.getFriend().getScore()*/ >= 21)
         {
             myDB.removeGame(myGame.getGameId());
             request.getRequestDispatcher("lose.jsp").forward(request, response);
