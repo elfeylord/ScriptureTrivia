@@ -146,18 +146,17 @@ public class DatabaseAccess {
     public void removeGame(int gameId){
         //STEP 4: Execute a query
         String sql;
-        ResultSet rs = null;
         
         try{
             stmt = conn.createStatement();
             
             sql = "Delete FROM game_user "
                     + "WHERE game_id = " + gameId;
-            stmt.executeQuery(sql);   
+            stmt.executeUpdate(sql);   
             
             sql = "Delete FROM game "
                     + "WHERE id = " + gameId;
-            stmt.executeQuery(sql);   
+            stmt.executeUpdate(sql);   
             
         }catch(Exception e){
             //Handle errors for Class.forName
