@@ -106,3 +106,14 @@ body{
     vertical-align: middle;
     font-size: 16px;
 }
+.main-logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:70%;
+    background-image: url(../images/scriptures.jpg);
+    background-size: cover;
+    border-radius: 50px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}

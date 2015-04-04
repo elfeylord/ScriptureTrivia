@@ -13,10 +13,15 @@
         <jsp:include page="directives/linkedFiles.jsp" /> 
     </head>
     <body>
-        <jsp:include page="directives/header.jsp" /> 
+        <img class="main-logo" src="STtitle.svg">
         <div class="container img-rounded">
             <h1>Welcome to Scripture Trivia</h1>
-            <a class="btn btn-facebook" href ="FacebookLogin">Log in with your facebook account</a>
+            <h2><small>Compete against your friends to test your knowledge of the Scriptures in a competitive game.
+                    Then share your victory with your friends on Facebook! To get started, simply sign in with your
+                Facebook account by clicking the button below. Invite your friends to do the same and challenge them 
+                to a game! Keep playing until you have scored enough points to win!</small></h2>
+            <br>
+            <a class="btn btn-facebook center-block" href ="FacebookLogin">Log in with your facebook account</a>
         </div>
     </body>
 </html>
