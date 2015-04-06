@@ -6,6 +6,7 @@
 package Facebook;
 
 import Database.CurrentGame;
+import Database.Game;
 import facebook4j.Facebook;
 import facebook4j.FacebookException;
 import java.io.IOException;
@@ -39,13 +40,11 @@ public class Share extends HttpServlet {
             throws ServletException, IOException {
         
         Facebook facebook = (Facebook)request.getSession().getAttribute("facebook");
-        CurrentGame myGame = (CurrentGame)request.getSession().getAttribute("game");
+        Game myGame = (Game)request.getSession().getAttribute("game");
         try {
          
-            facebook.postLink(new URL("http://scripturetricia-scripturetrivia.rhcloud.com"),
-                    "I just smashed " + myGame.getFriendName() + " on Scripture Trivia! You should play too!!");
-            //facebook.postLink(new URL("http://scripturetricia-scripturetrivia.rhcloud.com"),
-            //        "(test)I just smashed " + "@[" + friendId + ":1:" + friendName + "]" + " on Scripture Trivia! You should play too!!");
+            facebook.postLink(new URL("http://scripturetrivia-scripturetrivia.rhcloud.com"),
+                    "I just smashed " + myGame.getFriend().getName()+ " on Scripture Trivia! You should play too!!");
            
         } catch (FacebookException ex) {
             Logger.getLogger(Share.class.getName()).log(Level.SEVERE, null, ex);
