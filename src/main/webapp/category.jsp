@@ -9,7 +9,7 @@
     </head>
     <body>
         <jsp:include page="directives/header.jsp" />
-        <button style="z-index: 700;" class="btn btn-primary block-center" onclick="location.reload();">Fix Spinner</button>
+        <button style="z-index: 1700;" class="btn btn-primary block-center" onclick="location.reload();">Fix Spinner</button>
         <div onclick="stop();" class="point">
             <div class="top-fade"></div>
             <div class="bottom-fade"></div>
