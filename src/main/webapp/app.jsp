@@ -20,29 +20,41 @@
     <body> 
         
         <jsp:include page="directives/header.jsp" /> 
-        <a href ="http://scripturetrivia-scripturetrivia.rhcloud.com"> Click here to Play The Game</a>
+        <a href ="Login"> Click here to Play The Game</a>
         <div>
             Sign in with your facebook account and play with your friends that play Scripture Trivia as well!
+        </div>
+        <div>
             <img src="images/Login.JPG" alt="Scripture Trivia" height="500" width="800">
         </div>
         <div>
             Choose to start a new game with you friends, or continue to play a game that’s your turn.
+            </div>
+        <div>
             <img src="images/Home.JPG" alt="Scripture Trivia" height="500" width="800">
         </div>
         <div>
             Once you have selected a game, spin the category wheel to get a category of scripture trivia questions to answer!
+            </div>
+        <div>
             <img src="images/Category.JPG" alt="Scripture Trivia" height="500" width="800">
         </div>
         <div>
-            Answer the question! But be quick, you only have 15 seconds!             Get it correct and keep playing.
+            Answer the question! But be quick, you only have 15 seconds! Get it correct and keep playing.
+            </div>
+        <div>
             <img src="images/Answer.JPG" alt="Scripture Trivia" height="500" width="800">
         </div>
         <div>
             Get it wrong, or let the time run out and it will be your friend’s turn to play...
+            </div>
+        <div>
             <img src="images/Answer2.JPG" alt="Scripture Trivia" height="500" width="800">
         </div>
         <div>
-            Once you win, tell all your friends on facebook so they too can know that you're the best!                    
+            Once you win, tell all your friends on facebook so they too can know that you're the best!
+            </div>
+        <div>
             <img src="images/Win.JPG" alt="Scripture Trivia" height="200" width="800">
         </div>
         <div>
